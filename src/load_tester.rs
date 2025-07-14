@@ -9,16 +9,43 @@ use std::time::{Duration, Instant};
 use chrono::Local;
 use threadpool::ThreadPool;
 
+const MAX_THREADS: usize = 100; // Limit maximum threads to prevent resource exhaustion
+const MAX_CONNECTIONS_PER_HOST: usize = 50; // Connection pool limit
+
 pub struct LoadTester {
     config: LoadTestConfig,
     client: Arc<Client>,
+    pool: ThreadPool,
 }
 
 impl LoadTester {
     pub fn new(config: LoadTestConfig) -> Self {
+        // Calculate optimal thread pool size based on scenarios
+        let max_concurrency = config.scenarios.iter()
+            .map(|s| s.concurrency)
+            .max()
+            .unwrap_or(1);
+        
+        let thread_pool_size = (max_concurrency).min(MAX_THREADS);
+        
+        // Create a client with connection pooling and timeouts
+        let client = Client::builder()
+            .pool_max_idle_per_host(MAX_CONNECTIONS_PER_HOST)
+            .pool_idle_timeout(Some(Duration::from_secs(30)))
+            .timeout(Duration::from_secs(30))
+            .connect_timeout(Duration::from_secs(10))
+            .build()
+            .expect("Failed to create HTTP client");
+        
+        println!("🔧 LoadTester initialized:");
+        println!("   Thread pool size: {}", thread_pool_size);
+        println!("   Max connections per host: {}", MAX_CONNECTIONS_PER_HOST);
+        println!("   Request timeout: 30s");
+        
         Self {
             config,
-            client: Arc::new(Client::new()),
+            client: Arc::new(client),
+            pool: ThreadPool::new(thread_pool_size),
         }
     }
 
@@ -108,42 +135,27 @@ impl LoadTester {
         let scenario_latencies = Arc::new(Mutex::new(LatencyMetrics::new()));
         let mut endpoint_results = Vec::new();
 
-        // Run each endpoint in parallel
-        let mut endpoint_threads = vec![];
-
+        // Run each endpoint sequentially with shared thread pool to avoid resource exhaustion
         for endpoint in endpoints {
-            let client = Arc::clone(&self.client);
             let scenario_total_requests = Arc::clone(&scenario_total_requests);
             let scenario_total_errors = Arc::clone(&scenario_total_errors);
             let scenario_latencies = Arc::clone(&scenario_latencies);
             let endpoint = endpoint.to_string();
             let url = format!("{}{}", self.config.base_url, endpoint);
-            let auth_header = self.config.auth_header.clone();
-            let tenant_header = self.config.tenant_header.clone();
             let concurrency = scenario.concurrency;
             let requests = scenario.requests;
 
-            let handle = thread::spawn(move || {
-                Self::run_endpoint_test(
-                    &client,
-                    &url,
-                    &endpoint,
-                    &auth_header,
-                    &tenant_header,
-                    concurrency,
-                    requests,
-                    &scenario_total_requests,
-                    &scenario_total_errors,
-                    &scenario_latencies,
-                )
-            });
+            let endpoint_result = self.run_endpoint_test(
+                &url,
+                &endpoint,
+                concurrency,
+                requests,
+                &scenario_total_requests,
+                &scenario_total_errors,
+                &scenario_latencies,
+            );
 
-            endpoint_threads.push(handle);
-        }
-
-        // Wait for all endpoints to finish and collect results
-        for handle in endpoint_threads {
-            endpoint_results.push(handle.join().unwrap());
+            endpoint_results.push(endpoint_result);
         }
 
         let scenario_duration = scenario_start_time.elapsed();
@@ -192,11 +204,9 @@ impl LoadTester {
     }
 
     fn run_endpoint_test(
-        client: &Arc<Client>,
+        &self,
         url: &str,
         endpoint: &str,
-        auth_header: &str,
-        tenant_header: &str,
         concurrency: usize,
         requests: usize,
         scenario_total_requests: &Arc<Mutex<usize>>,
@@ -207,67 +217,144 @@ impl LoadTester {
         let fail_count = Arc::new(Mutex::new(0));
         let endpoint_latencies = Arc::new(Mutex::new(LatencyMetrics::new()));
         let status_counts = Arc::new(Mutex::new(HashMap::new()));
-        let pool = ThreadPool::new(concurrency.min(50));
+        
+        // Calculate delay between requests to achieve desired concurrency
+        let request_delay = if concurrency > 0 {
+            Duration::from_millis((1000 / concurrency.min(100)) as u64) // Limit to 100 RPS max per endpoint
+        } else {
+            Duration::from_millis(10)
+        };
+        
+        let pending_requests = Arc::new(Mutex::new(0));
+        let completed_requests = Arc::new(Mutex::new(0));
 
-        for _ in 0..requests {
-            let client = Arc::clone(client);
+        for i in 0..requests {
+            // Wait if we have too many pending requests
+            loop {
+                let pending = { *pending_requests.lock().unwrap() };
+                if pending < concurrency.min(MAX_THREADS / 2) { // Limit concurrent requests per endpoint
+                    break;
+                }
+                thread::sleep(Duration::from_millis(1));
+            }
+
+            let client = Arc::clone(&self.client);
             let url = url.to_string();
-            let auth_header = auth_header.to_string();
-            let tenant_header = tenant_header.to_string();
+            let auth_header = self.config.auth_header.clone();
+            let tenant_header = self.config.tenant_header.clone();
             let success_count = Arc::clone(&success_count);
             let fail_count = Arc::clone(&fail_count);
             let status_counts = Arc::clone(&status_counts);
             let endpoint_latencies = Arc::clone(&endpoint_latencies);
+            let scenario_total_requests = Arc::clone(scenario_total_requests);
+            let scenario_total_errors = Arc::clone(scenario_total_errors);
+            let scenario_latencies = Arc::clone(scenario_latencies);
+            let pending_requests = Arc::clone(&pending_requests);
+            let completed_requests = Arc::clone(&completed_requests);
 
-            pool.execute(move || {
+            // Increment pending counter
+            {
+                let mut pending = pending_requests.lock().unwrap();
+                *pending += 1;
+            }
+
+            self.pool.execute(move || {
                 let start_time = Instant::now();
+                
                 let res = client
                     .get(&url)
                     .header("Authorization", auth_header)
                     .header("tenantId", tenant_header)
                     .send();
+                    
                 let latency = start_time.elapsed().as_millis() as u64;
 
+                // Update metrics
                 endpoint_latencies.lock().unwrap().add_latency(latency);
+                scenario_latencies.lock().unwrap().add_latency(latency);
 
                 match res {
                     Ok(response) => {
+                        {
+                            let mut total = scenario_total_requests.lock().unwrap();
+                            *total += 1;
+                        }
+                        
                         if response.status().is_success() {
                             let mut sc = success_count.lock().unwrap();
                             *sc += 1;
                         } else {
                             let mut fc = fail_count.lock().unwrap();
                             *fc += 1;
+                            let mut errors = scenario_total_errors.lock().unwrap();
+                            *errors += 1;
                         }
                         let mut sm = status_counts.lock().unwrap();
                         *sm.entry(response.status().as_u16()).or_insert(0) += 1;
                     }
-                    Err(_) => {
-                        let mut fc = fail_count.lock().unwrap();
-                        *fc += 1;
+                    Err(e) => {
+                        {
+                            let mut total = scenario_total_requests.lock().unwrap();
+                            *total += 1;
+                        }
+                        {
+                            let mut fc = fail_count.lock().unwrap();
+                            *fc += 1;
+                        }
+                        {
+                            let mut errors = scenario_total_errors.lock().unwrap();
+                            *errors += 1;
+                        }
                         let mut sm = status_counts.lock().unwrap();
                         *sm.entry(0).or_insert(0) += 1;
+                        
+                        // Log error for debugging
+                        if latency > 5000 { // Only log if it took more than 5 seconds
+                            eprintln!("Request failed after {}ms: {}", latency, e);
+                        }
                     }
                 }
 
-                thread::sleep(Duration::from_millis(1));
+                // Decrement pending counter and increment completed
+                {
+                    let mut pending = pending_requests.lock().unwrap();
+                    *pending -= 1;
+                }
+                {
+                    let mut completed = completed_requests.lock().unwrap();
+                    *completed += 1;
+                }
             });
+
+            // Add small delay between request submissions to prevent overwhelming
+            if i > 0 && i % 10 == 0 {
+                thread::sleep(request_delay);
+            }
         }
 
-        pool.join();
+        // Wait for all requests to complete with timeout
+        let timeout = Duration::from_secs(60); // 60 second timeout
+        let start_wait = Instant::now();
+        
+        loop {
+            let completed = { *completed_requests.lock().unwrap() };
+            let pending = { *pending_requests.lock().unwrap() };
+            
+            if completed >= requests || pending == 0 || start_wait.elapsed() > timeout {
+                break;
+            }
+            
+            thread::sleep(Duration::from_millis(100));
+        }
+
+        // Final wait to ensure all threads finish
+        thread::sleep(Duration::from_millis(500));
 
         let success = *success_count.lock().unwrap();
         let failures = *fail_count.lock().unwrap();
         let total = success + failures;
 
-        *scenario_total_requests.lock().unwrap() += total;
-        *scenario_total_errors.lock().unwrap() += failures;
-
         let endpoint_lat = endpoint_latencies.lock().unwrap();
-        let mut scenario_lat = scenario_latencies.lock().unwrap();
-        for &latency in &endpoint_lat.latencies {
-            scenario_lat.add_latency(latency);
-        }
 
         let success_rate = if total > 0 {
             (success as f64 / total as f64) * 100.0

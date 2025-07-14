@@ -19,11 +19,83 @@ impl LoadTestConfig {
             user_id: "0f75671e-a024-43bc-82aa-1f454f39ffd5".to_string(),
             period_id: "5b39887b-6659-4d87-975f-508917131ea3".to_string(),
             cycle_id: "a915cb6e-0974-4fb8-9553-81f04ce7ca45".to_string(),
-            scenarios: vec![Scenario {
-                concurrency: 50,
-                requests: 50,
-            }],
+            scenarios: Self::generate_scaling_scenarios(),
         }
+    }
+
+    /// Generate scaling scenarios from 200 to 10,000 connections
+    /// Pattern: 200 -> 400 -> 800 -> 1600 -> 3200 -> 6400 -> 10000
+    fn generate_scaling_scenarios() -> Vec<Scenario> {
+        let mut scenarios = Vec::new();
+        
+        // Start with smaller increments for fine-grained testing
+        let base_levels = vec![200, 400, 800];
+        
+        // Add exponential scaling: 1600, 3200, 6400
+        let mut current = 1600;
+        let mut exponential_levels = Vec::new();
+        while current <= 6400 {
+            exponential_levels.push(current);
+            current *= 2;
+        }
+        
+        // Add final target
+        let final_levels = vec![10000];
+        
+        // Combine all levels
+        let all_levels = [base_levels, exponential_levels, final_levels].concat();
+        
+        for concurrency in all_levels {
+            scenarios.push(Scenario {
+                concurrency,
+                requests: concurrency, // Match requests to concurrency for consistent load
+            });
+        }
+        
+        scenarios
+    }
+
+    /// Generate a simple scaling scenario for quick testing (fewer levels)
+    pub fn new_quick_scaling() -> Self {
+        let mut config = Self::new();
+        config.scenarios = vec![
+            Scenario { concurrency: 50, requests: 50 },
+            Scenario { concurrency: 100, requests: 100 },
+            Scenario { concurrency: 200, requests: 200 },
+            Scenario { concurrency: 500, requests: 500 },
+        ];
+        config
+    }
+
+    /// Generate a custom scaling scenario with specified max concurrency
+    pub fn new_custom_scaling(max_concurrency: usize) -> Self {
+        let mut config = Self::new();
+        config.scenarios = Self::generate_custom_scaling_scenarios(max_concurrency);
+        config
+    }
+
+    fn generate_custom_scaling_scenarios(max_concurrency: usize) -> Vec<Scenario> {
+        let mut scenarios = Vec::new();
+        let mut current = 200;
+        
+        // Generate scenarios doubling each time until we reach max
+        while current <= max_concurrency {
+            scenarios.push(Scenario {
+                concurrency: current,
+                requests: current,
+            });
+            
+            if current >= max_concurrency {
+                break;
+            }
+            
+            current = if current < 1000 { current * 2 } else { current + 1000 };
+            if current > max_concurrency {
+                current = max_concurrency;
+            }
+        }
+        
+        scenarios
     }
 
     pub fn get_endpoints(&self) -> Vec<String> {
@@ -50,6 +122,31 @@ impl LoadTestConfig {
             format!("/periods/{}/subperiods", self.period_id),
             "/cycles/".to_string(),
         ]
+    }
+
+    /// Get a description of the current scaling configuration
+    pub fn get_scaling_description(&self) -> String {
+        let concurrency_levels: Vec<usize> = self.scenarios.iter()
+            .map(|s| s.concurrency)
+            .collect();
+        
+        format!("Scaling from {} to {} concurrent connections ({} levels)",
+                concurrency_levels.first().unwrap_or(&0),
+                concurrency_levels.last().unwrap_or(&0),
+                concurrency_levels.len())
+    }
+
+    /// Get total estimated requests across all scenarios
+    pub fn get_total_requests(&self) -> usize {
+        self.scenarios.iter().map(|s| s.requests).sum()
+    }
+
+    /// Get estimated test duration (rough estimate based on request count)
+    pub fn estimate_duration_minutes(&self) -> f64 {
+        let total_requests = self.get_total_requests();
+        // Rough estimate: assume 10 requests per second average
+        let estimated_seconds = total_requests as f64 / 10.0;
+        estimated_seconds / 60.0
     }
 }
 
