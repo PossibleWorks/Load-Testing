@@ -15,14 +15,14 @@
         .endpoint-table th { background-color: #f2f2f2; }
         .metrics { display: flex; justify-content: space-around; margin: 20px 0; }
         .metric-box { border: 1px solid #ddd; padding: 15px; text-align: center; background-color: #f9f9f9; }
-        .chart-placeholder { border: 1px solid #ddd; height: 300px; margin: 20px 0; padding: 20px; text-align: center; background-color: #f9f9f9; }
+        .chart-container { border: 1px solid #ddd; margin: 20px 0; padding: 20px; background-color: #f9f9f9; }
     </style>
 </head>
 <body>
     <div class="header">
         <h1>Load Test Report</h1>
-        <p>Generated on: 2025-07-14 16:07:48</p>
-        <p>Test Duration: 7.47 seconds</p>
+        <p>Generated on: 2025-07-14 16:29:23</p>
+        <p>Test Duration: 12.12 seconds</p>
     </div>
 
     <div class="section">
@@ -42,8 +42,8 @@
             <tr><th>Parameter</th><th>Value</th></tr>
             <tr><td>Base URL</td><td>https://bev3-dev.lykkebook.com/api</td></tr>
             <tr><td>Total Endpoints Tested</td><td>18</td></tr>
-            <tr><td>Test Start Time</td><td>2025-07-14 16:07:40</td></tr>
-            <tr><td>Test End Time</td><td>2025-07-14 16:07:48</td></tr>
+            <tr><td>Test Start Time</td><td>2025-07-14 16:29:11</td></tr>
+            <tr><td>Test End Time</td><td>2025-07-14 16:29:23</td></tr>
         </table>
     </div>
 
@@ -60,11 +60,11 @@
             </div>
             <div class="metric-box">
                 <h3>Average RPS</h3>
-                <h2>120.48</h2>
+                <h2>74.23</h2>
             </div>
             <div class="metric-box">
                 <h3>Mean Latency</h3>
-                <h2>3880.67ms</h2>
+                <h2>5440.17ms</h2>
             </div>
         </div>
 
@@ -74,10 +74,10 @@
             <tr><td>Successful Requests</td><td>900</td></tr>
             <tr><td>Failed Requests</td><td>0</td></tr>
             <tr><td>Success Rate</td><td>100.00%</td></tr>
-            <tr><td>Average RPS</td><td>120.48 req/sec</td></tr>
-            <tr><td>Mean Latency</td><td>3880.67ms</td></tr>
-            <tr><td>95th Percentile Latency</td><td>6057ms</td></tr>
-            <tr><td>99th Percentile Latency</td><td>6057ms</td></tr>
+            <tr><td>Average RPS</td><td>74.23 req/sec</td></tr>
+            <tr><td>Mean Latency</td><td>5440.17ms</td></tr>
+            <tr><td>95th Percentile Latency</td><td>10020ms</td></tr>
+            <tr><td>99th Percentile Latency</td><td>10020ms</td></tr>
         </table>
     </div>
 
@@ -90,10 +90,10 @@
             <tr><td>Concurrency</td><td>50</td></tr>
             <tr><td>Total Requests</td><td>900</td></tr>
             <tr><td>Success Rate</td><td>100.00%</td></tr>
-            <tr><td>RPS</td><td>120.49</td></tr>
-            <tr><td>Mean Latency</td><td>3881.08ms</td></tr>
-            <tr><td>P95 Latency</td><td>6472ms</td></tr>
-            <tr><td>Duration</td><td>7.47s</td></tr>
+            <tr><td>RPS</td><td>74.24</td></tr>
+            <tr><td>Mean Latency</td><td>5440.64ms</td></tr>
+            <tr><td>P95 Latency</td><td>10443ms</td></tr>
+            <tr><td>Duration</td><td>12.12s</td></tr>
         </table>
 
         <h4>Endpoint Details:</h4>
@@ -114,8 +114,8 @@
                 <td>50</td>
                 <td>0</td>
                 <td>100.00%</td>
-                <td>4068.08ms</td>
-                <td>6663ms</td>
+                <td>6761.38ms</td>
+                <td>12106ms</td>
             </tr>
             <tr>
                 <td>/user/me</td>
@@ -123,8 +123,8 @@
                 <td>50</td>
                 <td>0</td>
                 <td>100.00%</td>
-                <td>2029.32ms</td>
-                <td>2882ms</td>
+                <td>4050.72ms</td>
+                <td>7604ms</td>
             </tr>
             <tr>
                 <td>/user/active-and-inactive-users</td>
@@ -132,8 +132,8 @@
                 <td>50</td>
                 <td>0</td>
                 <td>100.00%</td>
-                <td>3103.62ms</td>
-                <td>5698ms</td>
+                <td>4633.66ms</td>
+                <td>10454ms</td>
             </tr>
             <tr>
                 <td>/user/get-user-skills/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
@@ -141,8 +141,8 @@
                 <td>50</td>
                 <td>0</td>
                 <td>100.00%</td>
-                <td>3017.10ms</td>
-                <td>5368ms</td>
+                <td>3802.26ms</td>
+                <td>7711ms</td>
             </tr>
             <tr>
                 <td>/user/team/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
@@ -150,8 +150,8 @@
                 <td>50</td>
                 <td>0</td>
                 <td>100.00%</td>
-                <td>4575.54ms</td>
-                <td>5901ms</td>
+                <td>4122.52ms</td>
+                <td>10087ms</td>
             </tr>
             <tr>
                 <td>/user/chat-users/</td>
@@ -159,8 +159,8 @@
                 <td>50</td>
                 <td>0</td>
                 <td>100.00%</td>
-                <td>4680.44ms</td>
-                <td>6618ms</td>
+                <td>4582.94ms</td>
+                <td>9020ms</td>
             </tr>
             <tr>
                 <td>/user/all-users</td>
@@ -168,8 +168,8 @@
                 <td>50</td>
                 <td>0</td>
                 <td>100.00%</td>
-                <td>2824.40ms</td>
-                <td>6010ms</td>
+                <td>5767.26ms</td>
+                <td>10223ms</td>
             </tr>
             <tr>
                 <td>/user/user-progress-details/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3/a915cb6e-0974-4fb8-9553-81f04ce7ca45</td>
@@ -177,8 +177,8 @@
                 <td>50</td>
                 <td>0</td>
                 <td>100.00%</td>
-                <td>6057.48ms</td>
-                <td>7331ms</td>
+                <td>10020.96ms</td>
+                <td>11809ms</td>
             </tr>
             <tr>
                 <td>/goals/user-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
@@ -186,8 +186,8 @@
                 <td>50</td>
                 <td>0</td>
                 <td>100.00%</td>
-                <td>3528.68ms</td>
-                <td>5528ms</td>
+                <td>4047.52ms</td>
+                <td>8525ms</td>
             </tr>
             <tr>
                 <td>/goals/manager-reportee/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
@@ -195,8 +195,8 @@
                 <td>50</td>
                 <td>0</td>
                 <td>100.00%</td>
-                <td>3410.14ms</td>
-                <td>6123ms</td>
+                <td>4296.40ms</td>
+                <td>7714ms</td>
             </tr>
             <tr>
                 <td>/goals/eligible-reportees-for-cascade/5b39887b-6659-4d87-975f-508917131ea3</td>
@@ -204,8 +204,8 @@
                 <td>50</td>
                 <td>0</td>
                 <td>100.00%</td>
-                <td>4904.58ms</td>
-                <td>6293ms</td>
+                <td>4203.08ms</td>
+                <td>8540ms</td>
             </tr>
             <tr>
                 <td>/goals/get-goal-categories</td>
@@ -213,8 +213,8 @@
                 <td>50</td>
                 <td>0</td>
                 <td>100.00%</td>
-                <td>4221.14ms</td>
-                <td>6397ms</td>
+                <td>4889.60ms</td>
+                <td>8674ms</td>
             </tr>
             <tr>
                 <td>/goals/get-objectives-akrs-and-quadrants/a915cb6e-0974-4fb8-9553-81f04ce7ca45</td>
@@ -222,8 +222,8 @@
                 <td>50</td>
                 <td>0</td>
                 <td>100.00%</td>
-                <td>3209.02ms</td>
-                <td>6745ms</td>
+                <td>5608.54ms</td>
+                <td>9022ms</td>
             </tr>
             <tr>
                 <td>/goals/detailed-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
@@ -231,8 +231,8 @@
                 <td>50</td>
                 <td>0</td>
                 <td>100.00%</td>
-                <td>3654.58ms</td>
-                <td>5932ms</td>
+                <td>6555.78ms</td>
+                <td>10029ms</td>
             </tr>
             <tr>
                 <td>/goals/cascade-json/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3</td>
@@ -240,8 +240,8 @@
                 <td>50</td>
                 <td>0</td>
                 <td>100.00%</td>
-                <td>4277.94ms</td>
-                <td>6595ms</td>
+                <td>6149.62ms</td>
+                <td>9653ms</td>
             </tr>
             <tr>
                 <td>/periods/previous-current-next</td>
@@ -249,8 +249,8 @@
                 <td>50</td>
                 <td>0</td>
                 <td>100.00%</td>
-                <td>5412.54ms</td>
-                <td>6619ms</td>
+                <td>7672.14ms</td>
+                <td>10443ms</td>
             </tr>
             <tr>
                 <td>/periods/5b39887b-6659-4d87-975f-508917131ea3/subperiods</td>
@@ -258,8 +258,8 @@
                 <td>50</td>
                 <td>0</td>
                 <td>100.00%</td>
-                <td>3878.76ms</td>
-                <td>5879ms</td>
+                <td>4473.10ms</td>
+                <td>8698ms</td>
             </tr>
             <tr>
                 <td>/cycles/</td>
@@ -267,8 +267,8 @@
                 <td>50</td>
                 <td>0</td>
                 <td>100.00%</td>
-                <td>3006.04ms</td>
-                <td>5686ms</td>
+                <td>6294.00ms</td>
+                <td>9250ms</td>
             </tr>
         </table>
         
@@ -276,33 +276,222 @@
 
     <div class="section">
         <h2>5. Performance Charts</h2>
-        <div class="chart-placeholder">
-            <h3>Response Time vs Concurrency</h3>
-            <p>Chart showing how response times change with increasing concurrency levels</p>
-            <p><em>Note: Interactive charts can be generated using Chart.js or similar libraries</em></p>
-        </div>
-        <div class="chart-placeholder">
-            <h3>Requests Per Second Over Time</h3>
-            <p>Chart showing request throughput over the duration of the test</p>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>6. Conclusions and Recommendations</h2>
-        <h3>Performance Analysis:</h3>
-        <ul>
-            <li>Overall success rate: 100.00% - Excellent.</li>
-            <li>Average response time: 3880.67ms - Marginal.</li>
-            <li>Maximum throughput achieved: 120.48 requests per second.</li>
-        </ul>
         
-        <h3>Recommendations:</h3>
-        <ul>
-            <li>Consider optimizing slow endpoints and investigating error causes</li>
-            <li>Monitor database connection pool settings if response times degrade with higher concurrency</li>
-            <li>Consider implementing caching strategies for frequently accessed endpoints</li>
-            <li>Set up monitoring and alerting for response times exceeding acceptable thresholds</li>
-        </ul>
+        <div class="chart-container">
+            <h3>Endpoint Response Times</h3>
+            <canvas id="endpointLatencyChart" width="800" height="400"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <h3>Success Rate Overview</h3>
+            <canvas id="successChart" width="800" height="400"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <h3>Latency Distribution by Endpoint</h3>
+            <canvas id="percentileChart" width="800" height="400"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <h3>Endpoint Performance Comparison</h3>
+            <canvas id="endpointChart" width="800" height="600"></canvas>
+        </div>
     </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        
+        // Chart.js configuration and data
+        const chartColors = {
+            primary: '#3498db',
+            success: '#2ecc71',
+            warning: '#f39c12',
+            danger: '#e74c3c',
+            info: '#9b59b6',
+            secondary: '#95a5a6'
+        };
+
+        // Endpoint Response Times Chart (replacing the empty concurrency chart)
+        const endpointLatencyCtx = document.getElementById('endpointLatencyChart').getContext('2d');
+        new Chart(endpointLatencyCtx, {
+            type: 'bar',
+            data: {
+                labels: ["/auth/get-tenants", "/user/me", "/user/active-and-inactive-user", "/user/get-user-skills/0f75671e", "/user/team/0f75671e-a024-43bc-", "/user/chat-users/", "/user/all-users", "/user/user-progress-details/0f", "/goals/user-goals/5b39887b-665", "/goals/manager-reportee/5b3988", "/goals/eligible-reportees-for-", "/goals/get-goal-categories", "/goals/get-objectives-akrs-and", "/goals/detailed-goals/5b39887b", "/goals/cascade-json/0f75671e-a", "/periods/previous-current-next", "/periods/5b39887b-6659-4d87-97", "/cycles/"],
+                datasets: [{
+                    label: 'Mean Latency (ms)',
+                    data: [6761.38, 4050.72, 4633.66, 3802.26, 4122.52, 4582.94, 5767.26, 10020.96, 4047.52, 4296.4, 4203.08, 4889.6, 5608.54, 6555.78, 6149.62, 7672.14, 4473.1, 6294],
+                    backgroundColor: chartColors.primary,
+                    borderColor: chartColors.primary,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Response Times by API Endpoint'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Mean Latency (milliseconds)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'API Endpoints'
+                        },
+                        ticks: {
+                            maxRotation: 45,
+                            minRotation: 45
+                        }
+                    }
+                }
+            }
+        });
+
+        // Success Rate Chart
+        const successCtx = document.getElementById('successChart').getContext('2d');
+        new Chart(successCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Successful Requests', 'Failed Requests'],
+                datasets: [{
+                    data: [900, 0],
+                    backgroundColor: [chartColors.success, chartColors.danger],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Overall Request Success Rate'
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Percentile Chart (Radar) - showing P95 and P99 for endpoints
+        const percentileCtx = document.getElementById('percentileChart').getContext('2d');
+        new Chart(percentileCtx, {
+            type: 'radar',
+            data: {
+                labels: ["/auth/get-tenants", "/user/me", "/user/active-and-inactive-user", "/user/get-user-skills/0f75671e", "/user/team/0f75671e-a024-43bc-", "/user/chat-users/", "/user/all-users", "/user/user-progress-details/0f"],
+                datasets: [{
+                    label: 'Mean Latency (ms)',
+                    data: [6761.38, 4050.72, 4633.66, 3802.26, 4122.52, 4582.94, 5767.26, 10020.96],
+                    borderColor: chartColors.primary,
+                    backgroundColor: chartColors.primary + '20',
+                    pointBackgroundColor: chartColors.primary
+                }, {
+                    label: 'P95 Latency (ms)', 
+                    data: [6761.38, 4050.72, 4633.66, 3802.26, 4122.52, 4582.94, 5767.26, 10020.96],
+                    borderColor: chartColors.warning,
+                    backgroundColor: chartColors.warning + '20',
+                    pointBackgroundColor: chartColors.warning
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Latency Distribution Comparison (First 8 Endpoints)'
+                    }
+                },
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Latency (ms)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Endpoint Performance Chart
+        const endpointCtx = document.getElementById('endpointChart').getContext('2d');
+        new Chart(endpointCtx, {
+            type: 'bar',
+            data: {
+                labels: ["/auth/get-tenants", "/user/me", "/user/active-and-inactive-user", "/user/get-user-skills/0f75671e", "/user/team/0f75671e-a024-43bc-", "/user/chat-users/", "/user/all-users", "/user/user-progress-details/0f", "/goals/user-goals/5b39887b-665", "/goals/manager-reportee/5b3988", "/goals/eligible-reportees-for-", "/goals/get-goal-categories", "/goals/get-objectives-akrs-and", "/goals/detailed-goals/5b39887b", "/goals/cascade-json/0f75671e-a", "/periods/previous-current-next", "/periods/5b39887b-6659-4d87-97", "/cycles/"],
+                datasets: [{
+                    label: 'Mean Latency (ms)',
+                    data: [6761.38, 4050.72, 4633.66, 3802.26, 4122.52, 4582.94, 5767.26, 10020.96, 4047.52, 4296.4, 4203.08, 4889.6, 5608.54, 6555.78, 6149.62, 7672.14, 4473.1, 6294],
+                    backgroundColor: chartColors.primary,
+                    yAxisID: 'y'
+                }, {
+                    label: 'Success Rate (%)',
+                    data: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100],
+                    backgroundColor: chartColors.success,
+                    yAxisID: 'y1',
+                    type: 'line',
+                    borderColor: chartColors.success,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Endpoint Performance: Latency vs Success Rate'
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'API Endpoints'
+                        },
+                        ticks: {
+                            maxRotation: 45,
+                            minRotation: 45
+                        }
+                    },
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        title: {
+                            display: true,
+                            text: 'Mean Latency (ms)'
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'Success Rate (%)'
+                        },
+                        grid: {
+                            drawOnChartArea: false,
+                        },
+                        min: 0,
+                        max: 100
+                    }
+                }
+            }
+        });
+        
+    </script>
 </body>
 </html>

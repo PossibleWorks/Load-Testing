@@ -4,6 +4,8 @@ use std::io::Write;
 
 impl LoadTestReport {
     pub fn generate_html(&self) -> String {
+        let chart_data = self.generate_chart_data();
+        
         format!(r#"<!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +23,7 @@ impl LoadTestReport {
         .endpoint-table th {{ background-color: #f2f2f2; }}
         .metrics {{ display: flex; justify-content: space-around; margin: 20px 0; }}
         .metric-box {{ border: 1px solid #ddd; padding: 15px; text-align: center; background-color: #f9f9f9; }}
-        .chart-placeholder {{ border: 1px solid #ddd; height: 300px; margin: 20px 0; padding: 20px; text-align: center; background-color: #f9f9f9; }}
+        .chart-container {{ border: 1px solid #ddd; margin: 20px 0; padding: 20px; background-color: #f9f9f9; }}
     </style>
 </head>
 <body>
@@ -94,16 +96,37 @@ impl LoadTestReport {
 
     <div class="section">
         <h2>5. Performance Charts</h2>
-        <div class="chart-placeholder">
+        
+        <div class="chart-container">
             <h3>Response Time vs Concurrency</h3>
-            <p>Chart showing how response times change with increasing concurrency levels</p>
-            <p><em>Note: Interactive charts can be generated using Chart.js or similar libraries</em></p>
+            <canvas id="latencyChart" width="800" height="400"></canvas>
         </div>
-        <div class="chart-placeholder">
-            <h3>Requests Per Second Over Time</h3>
-            <p>Chart showing request throughput over the duration of the test</p>
+        
+        <div class="chart-container">
+            <h3>Requests Per Second by Scenario</h3>
+            <canvas id="rpsChart" width="800" height="400"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <h3>Success Rate Overview</h3>
+            <canvas id="successChart" width="800" height="400"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <h3>Latency Distribution by Scenario</h3>
+            <canvas id="percentileChart" width="800" height="400"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <h3>Endpoint Performance Comparison</h3>
+            <canvas id="endpointChart" width="800" height="600"></canvas>
         </div>
     </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        {}
+    </script>
 </body>
 </html>"#,
             self.test_end_time.format("%Y-%m-%d %H:%M:%S"),
@@ -124,7 +147,8 @@ impl LoadTestReport {
             self.overall_mean_latency,
             self.overall_p95_latency,
             self.overall_p99_latency,
-            self.generate_scenario_html()
+            self.generate_scenario_html(),
+            chart_data
         )
     }
 
@@ -286,7 +310,7 @@ This load test was conducted to evaluate the performance and scalability of the 
 
 | Endpoint | Requests | Success | Errors | Success Rate | Mean Latency | P95 Latency |
 |----------|----------|---------|--------|--------------|--------------|-------------|
-{}
+| {} |
 "#,
                 index + 1,
                 scenario.concurrency,
@@ -312,6 +336,302 @@ This load test was conducted to evaluate the performance and scalability of the 
         }
         
         markdown
+    }
+
+    fn generate_chart_data(&self) -> String {
+        // Extract data for charts
+        let scenario_labels: Vec<String> = self.scenarios.iter()
+            .map(|s| format!("\"Concurrency {}\"", s.concurrency))
+            .collect();
+        
+        let mean_latencies: Vec<String> = self.scenarios.iter()
+            .map(|s| s.mean_latency.to_string())
+            .collect();
+            
+        let p95_latencies: Vec<String> = self.scenarios.iter()
+            .map(|s| s.p95_latency.to_string())
+            .collect();
+            
+        let p99_latencies: Vec<String> = self.scenarios.iter()
+            .map(|s| s.p99_latency.to_string())
+            .collect();
+            
+        let rps_values: Vec<String> = self.scenarios.iter()
+            .map(|s| s.rps.to_string())
+            .collect();
+            
+        // Get endpoint data from the first scenario (or aggregate if needed)
+        let endpoint_data = if let Some(first_scenario) = self.scenarios.first() {
+            first_scenario.endpoints.iter()
+                .map(|ep| (
+                    format!("\"{}\"", ep.endpoint.replace('"', "\\\"")[..ep.endpoint.len().min(30)].to_string()),
+                    ep.mean_latency.to_string(),
+                    ep.success_rate.to_string()
+                ))
+                .collect::<Vec<_>>()
+        } else {
+            Vec::new()
+        };
+        
+        let endpoint_labels: Vec<String> = endpoint_data.iter().map(|(label, _, _)| label.clone()).collect();
+        let endpoint_latencies: Vec<String> = endpoint_data.iter().map(|(_, latency, _)| latency.clone()).collect();
+        let endpoint_success_rates: Vec<String> = endpoint_data.iter().map(|(_, _, success)| success.clone()).collect();
+
+        format!(r#"
+        // Chart.js configuration and data
+        const chartColors = {{
+            primary: '#3498db',
+            success: '#2ecc71',
+            warning: '#f39c12',
+            danger: '#e74c3c',
+            info: '#9b59b6',
+            secondary: '#95a5a6'
+        }};
+
+        // Response Time vs Concurrency Chart
+        const latencyCtx = document.getElementById('latencyChart').getContext('2d');
+        new Chart(latencyCtx, {{
+            type: 'line',
+            data: {{
+                labels: [{}],
+                datasets: [{{
+                    label: 'Mean Latency (ms)',
+                    data: [{}],
+                    borderColor: chartColors.primary,
+                    backgroundColor: chartColors.primary + '20',
+                    tension: 0.1,
+                    fill: false
+                }}, {{
+                    label: 'P95 Latency (ms)',
+                    data: [{}],
+                    borderColor: chartColors.warning,
+                    backgroundColor: chartColors.warning + '20',
+                    tension: 0.1,
+                    fill: false
+                }}, {{
+                    label: 'P99 Latency (ms)',
+                    data: [{}],
+                    borderColor: chartColors.danger,
+                    backgroundColor: chartColors.danger + '20',
+                    tension: 0.1,
+                    fill: false
+                }}]
+            }},
+            options: {{
+                responsive: true,
+                plugins: {{
+                    title: {{
+                        display: true,
+                        text: 'Response Time Performance by Concurrency Level'
+                    }},
+                    legend: {{
+                        display: true
+                    }}
+                }},
+                scales: {{
+                    y: {{
+                        beginAtZero: true,
+                        title: {{
+                            display: true,
+                            text: 'Latency (milliseconds)'
+                        }}
+                    }},
+                    x: {{
+                        title: {{
+                            display: true,
+                            text: 'Test Scenarios'
+                        }}
+                    }}
+                }}
+            }}
+        }});
+
+        // RPS Chart
+        const rpsCtx = document.getElementById('rpsChart').getContext('2d');
+        new Chart(rpsCtx, {{
+            type: 'bar',
+            data: {{
+                labels: [{}],
+                datasets: [{{
+                    label: 'Requests Per Second',
+                    data: [{}],
+                    backgroundColor: chartColors.success,
+                    borderColor: chartColors.success,
+                    borderWidth: 1
+                }}]
+            }},
+            options: {{
+                responsive: true,
+                plugins: {{
+                    title: {{
+                        display: true,
+                        text: 'Throughput by Test Scenario'
+                    }}
+                }},
+                scales: {{
+                    y: {{
+                        beginAtZero: true,
+                        title: {{
+                            display: true,
+                            text: 'Requests Per Second'
+                        }}
+                    }}
+                }}
+            }}
+        }});
+
+        // Success Rate Chart
+        const successCtx = document.getElementById('successChart').getContext('2d');
+        new Chart(successCtx, {{
+            type: 'doughnut',
+            data: {{
+                labels: ['Successful Requests', 'Failed Requests'],
+                datasets: [{{
+                    data: [{}, {}],
+                    backgroundColor: [chartColors.success, chartColors.danger],
+                    borderWidth: 2
+                }}]
+            }},
+            options: {{
+                responsive: true,
+                plugins: {{
+                    title: {{
+                        display: true,
+                        text: 'Overall Request Success Rate'
+                    }},
+                    legend: {{
+                        position: 'bottom'
+                    }}
+                }}
+            }}
+        }});
+
+        // Percentile Chart (Radar)
+        const percentileCtx = document.getElementById('percentileChart').getContext('2d');
+        new Chart(percentileCtx, {{
+            type: 'radar',
+            data: {{
+                labels: [{}],
+                datasets: [{{
+                    label: 'Mean Latency (ms)',
+                    data: [{}],
+                    borderColor: chartColors.primary,
+                    backgroundColor: chartColors.primary + '20',
+                    pointBackgroundColor: chartColors.primary
+                }}, {{
+                    label: 'P95 Latency (ms)',
+                    data: [{}],
+                    borderColor: chartColors.warning,
+                    backgroundColor: chartColors.warning + '20',
+                    pointBackgroundColor: chartColors.warning
+                }}]
+            }},
+            options: {{
+                responsive: true,
+                plugins: {{
+                    title: {{
+                        display: true,
+                        text: 'Latency Distribution Across Scenarios'
+                    }}
+                }},
+                scales: {{
+                    r: {{
+                        beginAtZero: true,
+                        title: {{
+                            display: true,
+                            text: 'Latency (ms)'
+                        }}
+                    }}
+                }}
+            }}
+        }});
+
+        // Endpoint Performance Chart
+        const endpointCtx = document.getElementById('endpointChart').getContext('2d');
+        new Chart(endpointCtx, {{
+            type: 'bar',
+            data: {{
+                labels: [{}],
+                datasets: [{{
+                    label: 'Mean Latency (ms)',
+                    data: [{}],
+                    backgroundColor: chartColors.primary,
+                    yAxisID: 'y'
+                }}, {{
+                    label: 'Success Rate (%)',
+                    data: [{}],
+                    backgroundColor: chartColors.success,
+                    yAxisID: 'y1',
+                    type: 'line',
+                    borderColor: chartColors.success,
+                    tension: 0.1
+                }}]
+            }},
+            options: {{
+                responsive: true,
+                interaction: {{
+                    mode: 'index',
+                    intersect: false,
+                }},
+                plugins: {{
+                    title: {{
+                        display: true,
+                        text: 'Endpoint Performance: Latency vs Success Rate'
+                    }}
+                }},
+                scales: {{
+                    x: {{
+                        title: {{
+                            display: true,
+                            text: 'API Endpoints'
+                        }},
+                        ticks: {{
+                            maxRotation: 45,
+                            minRotation: 45
+                        }}
+                    }},
+                    y: {{
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        title: {{
+                            display: true,
+                            text: 'Mean Latency (ms)'
+                        }}
+                    }},
+                    y1: {{
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: {{
+                            display: true,
+                            text: 'Success Rate (%)'
+                        }},
+                        grid: {{
+                            drawOnChartArea: false,
+                        }},
+                        min: 0,
+                        max: 100
+                    }}
+                }}
+            }}
+        }});
+        "#,
+            scenario_labels.join(", "),
+            mean_latencies.join(", "),
+            p95_latencies.join(", "),
+            p99_latencies.join(", "),
+            scenario_labels.join(", "),
+            rps_values.join(", "),
+            self.overall_requests - self.overall_errors,
+            self.overall_errors,
+            scenario_labels.join(", "),
+            mean_latencies.join(", "),
+            p95_latencies.join(", "),
+            endpoint_labels.join(", "),
+            endpoint_latencies.join(", "),
+            endpoint_success_rates.join(", ")
+        )
     }
 }
 
