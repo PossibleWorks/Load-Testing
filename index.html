@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Load Test Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
+        .header { text-align: center; border-bottom: 2px solid #333; padding-bottom: 20px; }
+        .summary-table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        .summary-table th, .summary-table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        .summary-table th { background-color: #f2f2f2; }
+        .section { margin: 30px 0; }
+        .endpoint-table { border-collapse: collapse; width: 100%; font-size: 12px; }
+        .endpoint-table th, .endpoint-table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        .endpoint-table th { background-color: #f2f2f2; }
+        .metrics { display: flex; justify-content: space-around; margin: 20px 0; }
+        .metric-box { border: 1px solid #ddd; padding: 15px; text-align: center; background-color: #f9f9f9; }
+        .chart-placeholder { border: 1px solid #ddd; height: 300px; margin: 20px 0; padding: 20px; text-align: center; background-color: #f9f9f9; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Load Test Report</h1>
+        <p>Generated on: 2025-07-14 16:07:48</p>
+        <p>Test Duration: 7.47 seconds</p>
+    </div>
+
+    <div class="section">
+        <h2>1. Test Objectives</h2>
+        <p>This load test was conducted to evaluate the performance and scalability of the API endpoints under various load conditions. The test aimed to:</p>
+        <ul>
+            <li>Determine the maximum sustainable request rate</li>
+            <li>Measure response times under different concurrency levels</li>
+            <li>Identify potential bottlenecks and failure points</li>
+            <li>Validate system stability under stress conditions</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>2. Test Configuration</h2>
+        <table class="summary-table">
+            <tr><th>Parameter</th><th>Value</th></tr>
+            <tr><td>Base URL</td><td>https://bev3-dev.lykkebook.com/api</td></tr>
+            <tr><td>Total Endpoints Tested</td><td>18</td></tr>
+            <tr><td>Test Start Time</td><td>2025-07-14 16:07:40</td></tr>
+            <tr><td>Test End Time</td><td>2025-07-14 16:07:48</td></tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>3. Overall Results Summary</h2>
+        <div class="metrics">
+            <div class="metric-box">
+                <h3>Total Requests</h3>
+                <h2>900</h2>
+            </div>
+            <div class="metric-box">
+                <h3>Success Rate</h3>
+                <h2>100.00%</h2>
+            </div>
+            <div class="metric-box">
+                <h3>Average RPS</h3>
+                <h2>120.48</h2>
+            </div>
+            <div class="metric-box">
+                <h3>Mean Latency</h3>
+                <h2>3880.67ms</h2>
+            </div>
+        </div>
+
+        <table class="summary-table">
+            <tr><th>Metric</th><th>Value</th></tr>
+            <tr><td>Total Requests</td><td>900</td></tr>
+            <tr><td>Successful Requests</td><td>900</td></tr>
+            <tr><td>Failed Requests</td><td>0</td></tr>
+            <tr><td>Success Rate</td><td>100.00%</td></tr>
+            <tr><td>Average RPS</td><td>120.48 req/sec</td></tr>
+            <tr><td>Mean Latency</td><td>3880.67ms</td></tr>
+            <tr><td>95th Percentile Latency</td><td>6057ms</td></tr>
+            <tr><td>99th Percentile Latency</td><td>6057ms</td></tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>4. Scenario Results</h2>
+        
+        <h3>Scenario 1 - Concurrency: 50</h3>
+        <table class="summary-table">
+            <tr><th>Metric</th><th>Value</th></tr>
+            <tr><td>Concurrency</td><td>50</td></tr>
+            <tr><td>Total Requests</td><td>900</td></tr>
+            <tr><td>Success Rate</td><td>100.00%</td></tr>
+            <tr><td>RPS</td><td>120.49</td></tr>
+            <tr><td>Mean Latency</td><td>3881.08ms</td></tr>
+            <tr><td>P95 Latency</td><td>6472ms</td></tr>
+            <tr><td>Duration</td><td>7.47s</td></tr>
+        </table>
+
+        <h4>Endpoint Details:</h4>
+        <table class="endpoint-table">
+            <tr>
+                <th>Endpoint</th>
+                <th>Requests</th>
+                <th>Success</th>
+                <th>Errors</th>
+                <th>Success Rate</th>
+                <th>Mean Latency</th>
+                <th>P95 Latency</th>
+            </tr>
+            
+            <tr>
+                <td>/auth/get-tenants</td>
+                <td>50</td>
+                <td>50</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>4068.08ms</td>
+                <td>6663ms</td>
+            </tr>
+            <tr>
+                <td>/user/me</td>
+                <td>50</td>
+                <td>50</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>2029.32ms</td>
+                <td>2882ms</td>
+            </tr>
+            <tr>
+                <td>/user/active-and-inactive-users</td>
+                <td>50</td>
+                <td>50</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>3103.62ms</td>
+                <td>5698ms</td>
+            </tr>
+            <tr>
+                <td>/user/get-user-skills/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>50</td>
+                <td>50</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>3017.10ms</td>
+                <td>5368ms</td>
+            </tr>
+            <tr>
+                <td>/user/team/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>50</td>
+                <td>50</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>4575.54ms</td>
+                <td>5901ms</td>
+            </tr>
+            <tr>
+                <td>/user/chat-users/</td>
+                <td>50</td>
+                <td>50</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>4680.44ms</td>
+                <td>6618ms</td>
+            </tr>
+            <tr>
+                <td>/user/all-users</td>
+                <td>50</td>
+                <td>50</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>2824.40ms</td>
+                <td>6010ms</td>
+            </tr>
+            <tr>
+                <td>/user/user-progress-details/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3/a915cb6e-0974-4fb8-9553-81f04ce7ca45</td>
+                <td>50</td>
+                <td>50</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>6057.48ms</td>
+                <td>7331ms</td>
+            </tr>
+            <tr>
+                <td>/goals/user-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>50</td>
+                <td>50</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>3528.68ms</td>
+                <td>5528ms</td>
+            </tr>
+            <tr>
+                <td>/goals/manager-reportee/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>50</td>
+                <td>50</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>3410.14ms</td>
+                <td>6123ms</td>
+            </tr>
+            <tr>
+                <td>/goals/eligible-reportees-for-cascade/5b39887b-6659-4d87-975f-508917131ea3</td>
+                <td>50</td>
+                <td>50</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>4904.58ms</td>
+                <td>6293ms</td>
+            </tr>
+            <tr>
+                <td>/goals/get-goal-categories</td>
+                <td>50</td>
+                <td>50</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>4221.14ms</td>
+                <td>6397ms</td>
+            </tr>
+            <tr>
+                <td>/goals/get-objectives-akrs-and-quadrants/a915cb6e-0974-4fb8-9553-81f04ce7ca45</td>
+                <td>50</td>
+                <td>50</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>3209.02ms</td>
+                <td>6745ms</td>
+            </tr>
+            <tr>
+                <td>/goals/detailed-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>50</td>
+                <td>50</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>3654.58ms</td>
+                <td>5932ms</td>
+            </tr>
+            <tr>
+                <td>/goals/cascade-json/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3</td>
+                <td>50</td>
+                <td>50</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>4277.94ms</td>
+                <td>6595ms</td>
+            </tr>
+            <tr>
+                <td>/periods/previous-current-next</td>
+                <td>50</td>
+                <td>50</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>5412.54ms</td>
+                <td>6619ms</td>
+            </tr>
+            <tr>
+                <td>/periods/5b39887b-6659-4d87-975f-508917131ea3/subperiods</td>
+                <td>50</td>
+                <td>50</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>3878.76ms</td>
+                <td>5879ms</td>
+            </tr>
+            <tr>
+                <td>/cycles/</td>
+                <td>50</td>
+                <td>50</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>3006.04ms</td>
+                <td>5686ms</td>
+            </tr>
+        </table>
+        
+    </div>
+
+    <div class="section">
+        <h2>5. Performance Charts</h2>
+        <div class="chart-placeholder">
+            <h3>Response Time vs Concurrency</h3>
+            <p>Chart showing how response times change with increasing concurrency levels</p>
+            <p><em>Note: Interactive charts can be generated using Chart.js or similar libraries</em></p>
+        </div>
+        <div class="chart-placeholder">
+            <h3>Requests Per Second Over Time</h3>
+            <p>Chart showing request throughput over the duration of the test</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>6. Conclusions and Recommendations</h2>
+        <h3>Performance Analysis:</h3>
+        <ul>
+            <li>Overall success rate: 100.00% - Excellent.</li>
+            <li>Average response time: 3880.67ms - Marginal.</li>
+            <li>Maximum throughput achieved: 120.48 requests per second.</li>
+        </ul>
+        
+        <h3>Recommendations:</h3>
+        <ul>
+            <li>Consider optimizing slow endpoints and investigating error causes</li>
+            <li>Monitor database connection pool settings if response times degrade with higher concurrency</li>
+            <li>Consider implementing caching strategies for frequently accessed endpoints</li>
+            <li>Set up monitoring and alerting for response times exceeding acceptable thresholds</li>
+        </ul>
+    </div>
+</body>
+</html>
