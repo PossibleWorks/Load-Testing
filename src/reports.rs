@@ -104,24 +104,6 @@ impl LoadTestReport {
             <p>Chart showing request throughput over the duration of the test</p>
         </div>
     </div>
-
-    <div class="section">
-        <h2>6. Conclusions and Recommendations</h2>
-        <h3>Performance Analysis:</h3>
-        <ul>
-            <li>Overall success rate: {:.2}% - {}.</li>
-            <li>Average response time: {:.2}ms - {}.</li>
-            <li>Maximum throughput achieved: {:.2} requests per second.</li>
-        </ul>
-        
-        <h3>Recommendations:</h3>
-        <ul>
-            <li>{}</li>
-            <li>Monitor database connection pool settings if response times degrade with higher concurrency</li>
-            <li>Consider implementing caching strategies for frequently accessed endpoints</li>
-            <li>Set up monitoring and alerting for response times exceeding acceptable thresholds</li>
-        </ul>
-    </div>
 </body>
 </html>"#,
             self.test_end_time.format("%Y-%m-%d %H:%M:%S"),
@@ -142,17 +124,7 @@ impl LoadTestReport {
             self.overall_mean_latency,
             self.overall_p95_latency,
             self.overall_p99_latency,
-            self.generate_scenario_html(),
-            self.overall_success_rate,
-            if self.overall_success_rate >= 99.0 { "Excellent" } else if self.overall_success_rate >= 95.0 { "Good" } else { "Needs improvement" },
-            self.overall_mean_latency,
-            if self.overall_mean_latency <= 1000.0 { "Acceptable" } else if self.overall_mean_latency <= 5000.0 { "Marginal" } else { "Poor" },
-            self.overall_rps,
-            if self.overall_success_rate >= 99.0 && self.overall_mean_latency <= 1000.0 { 
-                "System performance is within acceptable parameters for current load levels" 
-            } else { 
-                "Consider optimizing slow endpoints and investigating error causes" 
-            }
+            self.generate_scenario_html()
         )
     }
 
@@ -270,24 +242,6 @@ This load test was conducted to evaluate the performance and scalability of the 
 ## 4. Scenario Results
 
 {}
-
-## 5. Performance Analysis
-
-### Response Time Analysis
-- **Overall success rate:** {:.2}% - {}
-- **Average response time:** {:.2}ms - {}  
-- **Maximum throughput achieved:** {:.2} requests per second
-
-### Recommendations
-
-1. {}
-2. Monitor database connection pool settings if response times degrade with higher concurrency
-3. Consider implementing caching strategies for frequently accessed endpoints
-4. Set up monitoring and alerting for response times exceeding acceptable thresholds
-
-## 6. Conclusions
-
-{}
 "#,
             self.test_end_time.format("%Y-%m-%d %H:%M:%S"),
             self.total_duration_seconds,
@@ -307,22 +261,7 @@ This load test was conducted to evaluate the performance and scalability of the 
             self.overall_mean_latency,
             self.overall_p95_latency,
             self.overall_p99_latency,
-            self.generate_scenario_markdown(),
-            self.overall_success_rate,
-            if self.overall_success_rate >= 99.0 { "Excellent" } else if self.overall_success_rate >= 95.0 { "Good" } else { "Needs improvement" },
-            self.overall_mean_latency,
-            if self.overall_mean_latency <= 1000.0 { "Acceptable" } else if self.overall_mean_latency <= 5000.0 { "Marginal" } else { "Poor" },
-            self.overall_rps,
-            if self.overall_success_rate >= 99.0 && self.overall_mean_latency <= 1000.0 { 
-                "System performance is within acceptable parameters for current load levels" 
-            } else { 
-                "Consider optimizing slow endpoints and investigating error causes" 
-            },
-            if self.overall_success_rate >= 99.0 && self.overall_mean_latency <= 1000.0 {
-                "The system demonstrates good performance characteristics under the tested load conditions. Continue monitoring in production environments."
-            } else {
-                "Performance improvements are recommended. Focus on optimizing high-latency endpoints and reducing error rates."
-            }
+            self.generate_scenario_markdown()
         )
     }
 
