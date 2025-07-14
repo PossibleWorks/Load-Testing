@@ -1,0 +1,1802 @@
+{
+  "test_start_time": "2025-07-14T17:31:15.049944843Z",
+  "test_end_time": "2025-07-14T18:10:26.773217118Z",
+  "total_duration_seconds": 2351.558921083,
+  "overall_requests": 406800,
+  "overall_errors": 3816,
+  "overall_success_rate": 99.06194690265487,
+  "overall_rps": 172.99162540764664,
+  "overall_mean_latency": 256.4419862340216,
+  "overall_p95_latency": 774,
+  "overall_p99_latency": 1666,
+  "scenarios": [
+    {
+      "concurrency": 200,
+      "total_requests": 3600,
+      "successful_requests": 2664,
+      "failed_requests": 936,
+      "success_rate": 74.0,
+      "rps": 6.457316901297955,
+      "mean_latency": 7241.961944444444,
+      "p95_latency": 30000,
+      "p99_latency": 30000,
+      "duration_seconds": 557.507096992,
+      "endpoints": [
+        {
+          "endpoint": "/auth/get-tenants",
+          "total_requests": 200,
+          "successful_requests": 200,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 874.99,
+          "p95_latency": 995,
+          "p99_latency": 1001,
+          "status_codes": {
+            "200": 200
+          }
+        },
+        {
+          "endpoint": "/user/me",
+          "total_requests": 200,
+          "successful_requests": 0,
+          "failed_requests": 200,
+          "success_rate": 0.0,
+          "mean_latency": 29233.615,
+          "p95_latency": 30000,
+          "p99_latency": 30000,
+          "status_codes": {
+            "500": 32,
+            "0": 168
+          }
+        },
+        {
+          "endpoint": "/user/active-and-inactive-users",
+          "total_requests": 200,
+          "successful_requests": 0,
+          "failed_requests": 200,
+          "success_rate": 0.0,
+          "mean_latency": 29957.26,
+          "p95_latency": 30000,
+          "p99_latency": 30000,
+          "status_codes": {
+            "0": 197,
+            "500": 3
+          }
+        },
+        {
+          "endpoint": "/user/get-user-skills/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 200,
+          "successful_requests": 0,
+          "failed_requests": 200,
+          "success_rate": 0.0,
+          "mean_latency": 30000.0,
+          "p95_latency": 30000,
+          "p99_latency": 30000,
+          "status_codes": {
+            "0": 200
+          }
+        },
+        {
+          "endpoint": "/user/team/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 200,
+          "successful_requests": 89,
+          "failed_requests": 111,
+          "success_rate": 44.5,
+          "mean_latency": 17119.805,
+          "p95_latency": 30000,
+          "p99_latency": 30000,
+          "status_codes": {
+            "500": 11,
+            "200": 89,
+            "0": 100
+          }
+        },
+        {
+          "endpoint": "/user/chat-users/",
+          "total_requests": 200,
+          "successful_requests": 135,
+          "failed_requests": 65,
+          "success_rate": 67.5,
+          "mean_latency": 3344.255,
+          "p95_latency": 12855,
+          "p99_latency": 12877,
+          "status_codes": {
+            "200": 135,
+            "502": 65
+          }
+        },
+        {
+          "endpoint": "/user/all-users",
+          "total_requests": 200,
+          "successful_requests": 135,
+          "failed_requests": 65,
+          "success_rate": 67.5,
+          "mean_latency": 362.575,
+          "p95_latency": 1076,
+          "p99_latency": 1306,
+          "status_codes": {
+            "502": 65,
+            "200": 135
+          }
+        },
+        {
+          "endpoint": "/user/user-progress-details/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3/a915cb6e-0974-4fb8-9553-81f04ce7ca45",
+          "total_requests": 200,
+          "successful_requests": 174,
+          "failed_requests": 26,
+          "success_rate": 87.0,
+          "mean_latency": 4001.525,
+          "p95_latency": 6361,
+          "p99_latency": 6697,
+          "status_codes": {
+            "502": 26,
+            "200": 174
+          }
+        },
+        {
+          "endpoint": "/goals/user-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 200,
+          "successful_requests": 200,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 596.05,
+          "p95_latency": 811,
+          "p99_latency": 882,
+          "status_codes": {
+            "200": 200
+          }
+        },
+        {
+          "endpoint": "/goals/manager-reportee/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 200,
+          "successful_requests": 200,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 1348.165,
+          "p95_latency": 1781,
+          "p99_latency": 1943,
+          "status_codes": {
+            "200": 200
+          }
+        },
+        {
+          "endpoint": "/goals/eligible-reportees-for-cascade/5b39887b-6659-4d87-975f-508917131ea3",
+          "total_requests": 200,
+          "successful_requests": 200,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 594.32,
+          "p95_latency": 1051,
+          "p99_latency": 1226,
+          "status_codes": {
+            "200": 200
+          }
+        },
+        {
+          "endpoint": "/goals/get-goal-categories",
+          "total_requests": 200,
+          "successful_requests": 200,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 224.46,
+          "p95_latency": 275,
+          "p99_latency": 296,
+          "status_codes": {
+            "200": 200
+          }
+        },
+        {
+          "endpoint": "/goals/get-objectives-akrs-and-quadrants/a915cb6e-0974-4fb8-9553-81f04ce7ca45",
+          "total_requests": 200,
+          "successful_requests": 200,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 613.115,
+          "p95_latency": 806,
+          "p99_latency": 906,
+          "status_codes": {
+            "200": 200
+          }
+        },
+        {
+          "endpoint": "/goals/detailed-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 200,
+          "successful_requests": 199,
+          "failed_requests": 1,
+          "success_rate": 99.5,
+          "mean_latency": 1048.11,
+          "p95_latency": 1304,
+          "p99_latency": 1353,
+          "status_codes": {
+            "502": 1,
+            "200": 199
+          }
+        },
+        {
+          "endpoint": "/goals/cascade-json/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3",
+          "total_requests": 200,
+          "successful_requests": 200,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 596.57,
+          "p95_latency": 734,
+          "p99_latency": 794,
+          "status_codes": {
+            "200": 200
+          }
+        },
+        {
+          "endpoint": "/periods/previous-current-next",
+          "total_requests": 200,
+          "successful_requests": 146,
+          "failed_requests": 54,
+          "success_rate": 73.0,
+          "mean_latency": 8241.3,
+          "p95_latency": 30000,
+          "p99_latency": 30000,
+          "status_codes": {
+            "200": 146,
+            "0": 25,
+            "500": 29
+          }
+        },
+        {
+          "endpoint": "/periods/5b39887b-6659-4d87-975f-508917131ea3/subperiods",
+          "total_requests": 200,
+          "successful_requests": 200,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 203.16,
+          "p95_latency": 454,
+          "p99_latency": 645,
+          "status_codes": {
+            "200": 200
+          }
+        },
+        {
+          "endpoint": "/cycles/",
+          "total_requests": 200,
+          "successful_requests": 186,
+          "failed_requests": 14,
+          "success_rate": 93.0,
+          "mean_latency": 1996.04,
+          "p95_latency": 15568,
+          "p99_latency": 15670,
+          "status_codes": {
+            "200": 186,
+            "500": 14
+          }
+        }
+      ]
+    },
+    {
+      "concurrency": 400,
+      "total_requests": 7200,
+      "successful_requests": 7200,
+      "failed_requests": 0,
+      "success_rate": 100.0,
+      "rps": 92.41509801847685,
+      "mean_latency": 441.26194444444445,
+      "p95_latency": 1581,
+      "p99_latency": 2548,
+      "duration_seconds": 77.909347654,
+      "endpoints": [
+        {
+          "endpoint": "/auth/get-tenants",
+          "total_requests": 400,
+          "successful_requests": 400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 606.345,
+          "p95_latency": 791,
+          "p99_latency": 899,
+          "status_codes": {
+            "200": 400
+          }
+        },
+        {
+          "endpoint": "/user/me",
+          "total_requests": 400,
+          "successful_requests": 400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 289.16,
+          "p95_latency": 664,
+          "p99_latency": 825,
+          "status_codes": {
+            "200": 400
+          }
+        },
+        {
+          "endpoint": "/user/active-and-inactive-users",
+          "total_requests": 400,
+          "successful_requests": 400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 676.2225,
+          "p95_latency": 1079,
+          "p99_latency": 1216,
+          "status_codes": {
+            "200": 400
+          }
+        },
+        {
+          "endpoint": "/user/get-user-skills/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 400,
+          "successful_requests": 400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 221.2025,
+          "p95_latency": 393,
+          "p99_latency": 441,
+          "status_codes": {
+            "200": 400
+          }
+        },
+        {
+          "endpoint": "/user/team/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 400,
+          "successful_requests": 400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 174.83,
+          "p95_latency": 309,
+          "p99_latency": 333,
+          "status_codes": {
+            "200": 400
+          }
+        },
+        {
+          "endpoint": "/user/chat-users/",
+          "total_requests": 400,
+          "successful_requests": 400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 610.285,
+          "p95_latency": 999,
+          "p99_latency": 1075,
+          "status_codes": {
+            "200": 400
+          }
+        },
+        {
+          "endpoint": "/user/all-users",
+          "total_requests": 400,
+          "successful_requests": 400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 262.28,
+          "p95_latency": 356,
+          "p99_latency": 420,
+          "status_codes": {
+            "200": 400
+          }
+        },
+        {
+          "endpoint": "/user/user-progress-details/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3/a915cb6e-0974-4fb8-9553-81f04ce7ca45",
+          "total_requests": 400,
+          "successful_requests": 400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 2170.4525,
+          "p95_latency": 3130,
+          "p99_latency": 3381,
+          "status_codes": {
+            "200": 400
+          }
+        },
+        {
+          "endpoint": "/goals/user-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 400,
+          "successful_requests": 400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 306.0375,
+          "p95_latency": 417,
+          "p99_latency": 438,
+          "status_codes": {
+            "200": 400
+          }
+        },
+        {
+          "endpoint": "/goals/manager-reportee/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 400,
+          "successful_requests": 400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 581.2025,
+          "p95_latency": 792,
+          "p99_latency": 836,
+          "status_codes": {
+            "200": 400
+          }
+        },
+        {
+          "endpoint": "/goals/eligible-reportees-for-cascade/5b39887b-6659-4d87-975f-508917131ea3",
+          "total_requests": 400,
+          "successful_requests": 400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 278.83,
+          "p95_latency": 423,
+          "p99_latency": 453,
+          "status_codes": {
+            "200": 400
+          }
+        },
+        {
+          "endpoint": "/goals/get-goal-categories",
+          "total_requests": 400,
+          "successful_requests": 400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 126.195,
+          "p95_latency": 212,
+          "p99_latency": 247,
+          "status_codes": {
+            "200": 400
+          }
+        },
+        {
+          "endpoint": "/goals/get-objectives-akrs-and-quadrants/a915cb6e-0974-4fb8-9553-81f04ce7ca45",
+          "total_requests": 400,
+          "successful_requests": 400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 316.4325,
+          "p95_latency": 459,
+          "p99_latency": 496,
+          "status_codes": {
+            "200": 400
+          }
+        },
+        {
+          "endpoint": "/goals/detailed-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 400,
+          "successful_requests": 400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 478.775,
+          "p95_latency": 653,
+          "p99_latency": 740,
+          "status_codes": {
+            "200": 400
+          }
+        },
+        {
+          "endpoint": "/goals/cascade-json/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3",
+          "total_requests": 400,
+          "successful_requests": 400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 275.4675,
+          "p95_latency": 430,
+          "p99_latency": 457,
+          "status_codes": {
+            "200": 400
+          }
+        },
+        {
+          "endpoint": "/periods/previous-current-next",
+          "total_requests": 400,
+          "successful_requests": 400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 399.925,
+          "p95_latency": 656,
+          "p99_latency": 702,
+          "status_codes": {
+            "200": 400
+          }
+        },
+        {
+          "endpoint": "/periods/5b39887b-6659-4d87-975f-508917131ea3/subperiods",
+          "total_requests": 400,
+          "successful_requests": 400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 93.055,
+          "p95_latency": 254,
+          "p99_latency": 297,
+          "status_codes": {
+            "200": 400
+          }
+        },
+        {
+          "endpoint": "/cycles/",
+          "total_requests": 400,
+          "successful_requests": 400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 76.0175,
+          "p95_latency": 184,
+          "p99_latency": 240,
+          "status_codes": {
+            "200": 400
+          }
+        }
+      ]
+    },
+    {
+      "concurrency": 800,
+      "total_requests": 14400,
+      "successful_requests": 14400,
+      "failed_requests": 0,
+      "success_rate": 100.0,
+      "rps": 170.65351017803735,
+      "mean_latency": 242.7263888888889,
+      "p95_latency": 693,
+      "p99_latency": 1607,
+      "duration_seconds": 84.381504869,
+      "endpoints": [
+        {
+          "endpoint": "/auth/get-tenants",
+          "total_requests": 800,
+          "successful_requests": 800,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 526.74625,
+          "p95_latency": 672,
+          "p99_latency": 723,
+          "status_codes": {
+            "200": 800
+          }
+        },
+        {
+          "endpoint": "/user/me",
+          "total_requests": 800,
+          "successful_requests": 800,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 137.17375,
+          "p95_latency": 315,
+          "p99_latency": 362,
+          "status_codes": {
+            "200": 800
+          }
+        },
+        {
+          "endpoint": "/user/active-and-inactive-users",
+          "total_requests": 800,
+          "successful_requests": 800,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 327.0425,
+          "p95_latency": 637,
+          "p99_latency": 725,
+          "status_codes": {
+            "200": 800
+          }
+        },
+        {
+          "endpoint": "/user/get-user-skills/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 800,
+          "successful_requests": 800,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 114.42375,
+          "p95_latency": 329,
+          "p99_latency": 417,
+          "status_codes": {
+            "200": 800
+          }
+        },
+        {
+          "endpoint": "/user/team/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 800,
+          "successful_requests": 800,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 88.11125,
+          "p95_latency": 205,
+          "p99_latency": 232,
+          "status_codes": {
+            "200": 800
+          }
+        },
+        {
+          "endpoint": "/user/chat-users/",
+          "total_requests": 800,
+          "successful_requests": 800,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 302.47625,
+          "p95_latency": 670,
+          "p99_latency": 760,
+          "status_codes": {
+            "200": 800
+          }
+        },
+        {
+          "endpoint": "/user/all-users",
+          "total_requests": 800,
+          "successful_requests": 800,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 140.2475,
+          "p95_latency": 388,
+          "p99_latency": 445,
+          "status_codes": {
+            "200": 800
+          }
+        },
+        {
+          "endpoint": "/user/user-progress-details/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3/a915cb6e-0974-4fb8-9553-81f04ce7ca45",
+          "total_requests": 800,
+          "successful_requests": 800,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 1178.95625,
+          "p95_latency": 2823,
+          "p99_latency": 3096,
+          "status_codes": {
+            "200": 800
+          }
+        },
+        {
+          "endpoint": "/goals/user-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 800,
+          "successful_requests": 800,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 159.4225,
+          "p95_latency": 449,
+          "p99_latency": 617,
+          "status_codes": {
+            "200": 800
+          }
+        },
+        {
+          "endpoint": "/goals/manager-reportee/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 800,
+          "successful_requests": 800,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 299.445,
+          "p95_latency": 686,
+          "p99_latency": 854,
+          "status_codes": {
+            "200": 800
+          }
+        },
+        {
+          "endpoint": "/goals/eligible-reportees-for-cascade/5b39887b-6659-4d87-975f-508917131ea3",
+          "total_requests": 800,
+          "successful_requests": 800,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 145.3175,
+          "p95_latency": 407,
+          "p99_latency": 484,
+          "status_codes": {
+            "200": 800
+          }
+        },
+        {
+          "endpoint": "/goals/get-goal-categories",
+          "total_requests": 800,
+          "successful_requests": 800,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 59.97625,
+          "p95_latency": 103,
+          "p99_latency": 138,
+          "status_codes": {
+            "200": 800
+          }
+        },
+        {
+          "endpoint": "/goals/get-objectives-akrs-and-quadrants/a915cb6e-0974-4fb8-9553-81f04ce7ca45",
+          "total_requests": 800,
+          "successful_requests": 800,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 157.87375,
+          "p95_latency": 397,
+          "p99_latency": 464,
+          "status_codes": {
+            "200": 800
+          }
+        },
+        {
+          "endpoint": "/goals/detailed-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 800,
+          "successful_requests": 800,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 233.19,
+          "p95_latency": 451,
+          "p99_latency": 564,
+          "status_codes": {
+            "200": 800
+          }
+        },
+        {
+          "endpoint": "/goals/cascade-json/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3",
+          "total_requests": 800,
+          "successful_requests": 800,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 137.29625,
+          "p95_latency": 273,
+          "p99_latency": 326,
+          "status_codes": {
+            "200": 800
+          }
+        },
+        {
+          "endpoint": "/periods/previous-current-next",
+          "total_requests": 800,
+          "successful_requests": 800,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 220.5025,
+          "p95_latency": 463,
+          "p99_latency": 537,
+          "status_codes": {
+            "200": 800
+          }
+        },
+        {
+          "endpoint": "/periods/5b39887b-6659-4d87-975f-508917131ea3/subperiods",
+          "total_requests": 800,
+          "successful_requests": 800,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 72.9475,
+          "p95_latency": 141,
+          "p99_latency": 179,
+          "status_codes": {
+            "200": 800
+          }
+        },
+        {
+          "endpoint": "/cycles/",
+          "total_requests": 800,
+          "successful_requests": 800,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 67.92625,
+          "p95_latency": 150,
+          "p99_latency": 184,
+          "status_codes": {
+            "200": 800
+          }
+        }
+      ]
+    },
+    {
+      "concurrency": 1600,
+      "total_requests": 28800,
+      "successful_requests": 28619,
+      "failed_requests": 181,
+      "success_rate": 99.37152777777779,
+      "rps": 127.11503682627742,
+      "mean_latency": 340.4291666666667,
+      "p95_latency": 666,
+      "p99_latency": 3453,
+      "duration_seconds": 226.566429268,
+      "endpoints": [
+        {
+          "endpoint": "/auth/get-tenants",
+          "total_requests": 1600,
+          "successful_requests": 1600,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 532.58,
+          "p95_latency": 691,
+          "p99_latency": 750,
+          "status_codes": {
+            "200": 1600
+          }
+        },
+        {
+          "endpoint": "/user/me",
+          "total_requests": 1600,
+          "successful_requests": 1600,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 128.070625,
+          "p95_latency": 320,
+          "p99_latency": 387,
+          "status_codes": {
+            "200": 1600
+          }
+        },
+        {
+          "endpoint": "/user/active-and-inactive-users",
+          "total_requests": 1600,
+          "successful_requests": 1600,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 327.0475,
+          "p95_latency": 863,
+          "p99_latency": 1204,
+          "status_codes": {
+            "200": 1600
+          }
+        },
+        {
+          "endpoint": "/user/get-user-skills/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 1600,
+          "successful_requests": 1600,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 101.078125,
+          "p95_latency": 247,
+          "p99_latency": 295,
+          "status_codes": {
+            "200": 1600
+          }
+        },
+        {
+          "endpoint": "/user/team/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 1600,
+          "successful_requests": 1600,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 79.853125,
+          "p95_latency": 225,
+          "p99_latency": 274,
+          "status_codes": {
+            "200": 1600
+          }
+        },
+        {
+          "endpoint": "/user/chat-users/",
+          "total_requests": 1600,
+          "successful_requests": 1600,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 294.865625,
+          "p95_latency": 1129,
+          "p99_latency": 1297,
+          "status_codes": {
+            "200": 1600
+          }
+        },
+        {
+          "endpoint": "/user/all-users",
+          "total_requests": 1600,
+          "successful_requests": 1600,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 135.8775,
+          "p95_latency": 468,
+          "p99_latency": 541,
+          "status_codes": {
+            "200": 1600
+          }
+        },
+        {
+          "endpoint": "/user/user-progress-details/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3/a915cb6e-0974-4fb8-9553-81f04ce7ca45",
+          "total_requests": 1600,
+          "successful_requests": 1506,
+          "failed_requests": 94,
+          "success_rate": 94.125,
+          "mean_latency": 1962.824375,
+          "p95_latency": 14146,
+          "p99_latency": 22852,
+          "status_codes": {
+            "500": 92,
+            "200": 1506,
+            "0": 2
+          }
+        },
+        {
+          "endpoint": "/goals/user-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 1600,
+          "successful_requests": 1600,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 114.089375,
+          "p95_latency": 334,
+          "p99_latency": 408,
+          "status_codes": {
+            "200": 1600
+          }
+        },
+        {
+          "endpoint": "/goals/manager-reportee/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 1600,
+          "successful_requests": 1599,
+          "failed_requests": 1,
+          "success_rate": 99.9375,
+          "mean_latency": 248.195625,
+          "p95_latency": 997,
+          "p99_latency": 1619,
+          "status_codes": {
+            "502": 1,
+            "200": 1599
+          }
+        },
+        {
+          "endpoint": "/goals/eligible-reportees-for-cascade/5b39887b-6659-4d87-975f-508917131ea3",
+          "total_requests": 1600,
+          "successful_requests": 1600,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 106.58375,
+          "p95_latency": 379,
+          "p99_latency": 639,
+          "status_codes": {
+            "200": 1600
+          }
+        },
+        {
+          "endpoint": "/goals/get-goal-categories",
+          "total_requests": 1600,
+          "successful_requests": 1600,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 38.91625,
+          "p95_latency": 108,
+          "p99_latency": 146,
+          "status_codes": {
+            "200": 1600
+          }
+        },
+        {
+          "endpoint": "/goals/get-objectives-akrs-and-quadrants/a915cb6e-0974-4fb8-9553-81f04ce7ca45",
+          "total_requests": 1600,
+          "successful_requests": 1514,
+          "failed_requests": 86,
+          "success_rate": 94.625,
+          "mean_latency": 1666.414375,
+          "p95_latency": 19733,
+          "p99_latency": 30000,
+          "status_codes": {
+            "200": 1514,
+            "0": 27,
+            "500": 59
+          }
+        },
+        {
+          "endpoint": "/goals/detailed-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 1600,
+          "successful_requests": 1600,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 148.365625,
+          "p95_latency": 464,
+          "p99_latency": 875,
+          "status_codes": {
+            "200": 1600
+          }
+        },
+        {
+          "endpoint": "/goals/cascade-json/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3",
+          "total_requests": 1600,
+          "successful_requests": 1600,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 73.268125,
+          "p95_latency": 162,
+          "p99_latency": 358,
+          "status_codes": {
+            "200": 1600
+          }
+        },
+        {
+          "endpoint": "/periods/previous-current-next",
+          "total_requests": 1600,
+          "successful_requests": 1600,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 117.28375,
+          "p95_latency": 249,
+          "p99_latency": 327,
+          "status_codes": {
+            "200": 1600
+          }
+        },
+        {
+          "endpoint": "/periods/5b39887b-6659-4d87-975f-508917131ea3/subperiods",
+          "total_requests": 1600,
+          "successful_requests": 1600,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 30.265,
+          "p95_latency": 60,
+          "p99_latency": 81,
+          "status_codes": {
+            "200": 1600
+          }
+        },
+        {
+          "endpoint": "/cycles/",
+          "total_requests": 1600,
+          "successful_requests": 1600,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 22.14625,
+          "p95_latency": 42,
+          "p99_latency": 60,
+          "status_codes": {
+            "200": 1600
+          }
+        }
+      ]
+    },
+    {
+      "concurrency": 3200,
+      "total_requests": 57600,
+      "successful_requests": 57600,
+      "failed_requests": 0,
+      "success_rate": 100.0,
+      "rps": 368.7771453149687,
+      "mean_latency": 112.73258680555556,
+      "p95_latency": 442,
+      "p99_latency": 677,
+      "duration_seconds": 156.191891856,
+      "endpoints": [
+        {
+          "endpoint": "/auth/get-tenants",
+          "total_requests": 3200,
+          "successful_requests": 3200,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 440.74125,
+          "p95_latency": 596,
+          "p99_latency": 642,
+          "status_codes": {
+            "200": 3200
+          }
+        },
+        {
+          "endpoint": "/user/me",
+          "total_requests": 3200,
+          "successful_requests": 3200,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 96.8921875,
+          "p95_latency": 181,
+          "p99_latency": 2288,
+          "status_codes": {
+            "200": 3200
+          }
+        },
+        {
+          "endpoint": "/user/active-and-inactive-users",
+          "total_requests": 3200,
+          "successful_requests": 3200,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 177.1728125,
+          "p95_latency": 476,
+          "p99_latency": 1319,
+          "status_codes": {
+            "200": 3200
+          }
+        },
+        {
+          "endpoint": "/user/get-user-skills/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 3200,
+          "successful_requests": 3200,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 47.009375,
+          "p95_latency": 93,
+          "p99_latency": 138,
+          "status_codes": {
+            "200": 3200
+          }
+        },
+        {
+          "endpoint": "/user/team/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 3200,
+          "successful_requests": 3200,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 27.0725,
+          "p95_latency": 59,
+          "p99_latency": 82,
+          "status_codes": {
+            "200": 3200
+          }
+        },
+        {
+          "endpoint": "/user/chat-users/",
+          "total_requests": 3200,
+          "successful_requests": 3200,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 219.293125,
+          "p95_latency": 314,
+          "p99_latency": 388,
+          "status_codes": {
+            "200": 3200
+          }
+        },
+        {
+          "endpoint": "/user/all-users",
+          "total_requests": 3200,
+          "successful_requests": 3200,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 66.52,
+          "p95_latency": 208,
+          "p99_latency": 439,
+          "status_codes": {
+            "200": 3200
+          }
+        },
+        {
+          "endpoint": "/user/user-progress-details/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3/a915cb6e-0974-4fb8-9553-81f04ce7ca45",
+          "total_requests": 3200,
+          "successful_requests": 3200,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 412.9559375,
+          "p95_latency": 928,
+          "p99_latency": 1314,
+          "status_codes": {
+            "200": 3200
+          }
+        },
+        {
+          "endpoint": "/goals/user-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 3200,
+          "successful_requests": 3200,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 50.3075,
+          "p95_latency": 105,
+          "p99_latency": 150,
+          "status_codes": {
+            "200": 3200
+          }
+        },
+        {
+          "endpoint": "/goals/manager-reportee/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 3200,
+          "successful_requests": 3200,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 104.404375,
+          "p95_latency": 210,
+          "p99_latency": 260,
+          "status_codes": {
+            "200": 3200
+          }
+        },
+        {
+          "endpoint": "/goals/eligible-reportees-for-cascade/5b39887b-6659-4d87-975f-508917131ea3",
+          "total_requests": 3200,
+          "successful_requests": 3200,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 82.85375,
+          "p95_latency": 98,
+          "p99_latency": 2641,
+          "status_codes": {
+            "200": 3200
+          }
+        },
+        {
+          "endpoint": "/goals/get-goal-categories",
+          "total_requests": 3200,
+          "successful_requests": 3200,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 14.3478125,
+          "p95_latency": 20,
+          "p99_latency": 27,
+          "status_codes": {
+            "200": 3200
+          }
+        },
+        {
+          "endpoint": "/goals/get-objectives-akrs-and-quadrants/a915cb6e-0974-4fb8-9553-81f04ce7ca45",
+          "total_requests": 3200,
+          "successful_requests": 3200,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 65.2196875,
+          "p95_latency": 103,
+          "p99_latency": 127,
+          "status_codes": {
+            "200": 3200
+          }
+        },
+        {
+          "endpoint": "/goals/detailed-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 3200,
+          "successful_requests": 3200,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 82.6940625,
+          "p95_latency": 158,
+          "p99_latency": 198,
+          "status_codes": {
+            "200": 3200
+          }
+        },
+        {
+          "endpoint": "/goals/cascade-json/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3",
+          "total_requests": 3200,
+          "successful_requests": 3200,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 37.9196875,
+          "p95_latency": 73,
+          "p99_latency": 107,
+          "status_codes": {
+            "200": 3200
+          }
+        },
+        {
+          "endpoint": "/periods/previous-current-next",
+          "total_requests": 3200,
+          "successful_requests": 3200,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 70.5840625,
+          "p95_latency": 124,
+          "p99_latency": 180,
+          "status_codes": {
+            "200": 3200
+          }
+        },
+        {
+          "endpoint": "/periods/5b39887b-6659-4d87-975f-508917131ea3/subperiods",
+          "total_requests": 3200,
+          "successful_requests": 3200,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 17.6603125,
+          "p95_latency": 27,
+          "p99_latency": 39,
+          "status_codes": {
+            "200": 3200
+          }
+        },
+        {
+          "endpoint": "/cycles/",
+          "total_requests": 3200,
+          "successful_requests": 3200,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 15.538125,
+          "p95_latency": 24,
+          "p99_latency": 39,
+          "status_codes": {
+            "200": 3200
+          }
+        }
+      ]
+    },
+    {
+      "concurrency": 6400,
+      "total_requests": 115200,
+      "successful_requests": 115200,
+      "failed_requests": 0,
+      "success_rate": 100.0,
+      "rps": 438.9004138516483,
+      "mean_latency": 94.47606770833333,
+      "p95_latency": 393,
+      "p99_latency": 592,
+      "duration_seconds": 262.474120243,
+      "endpoints": [
+        {
+          "endpoint": "/auth/get-tenants",
+          "total_requests": 6400,
+          "successful_requests": 6400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 407.9759375,
+          "p95_latency": 562,
+          "p99_latency": 627,
+          "status_codes": {
+            "200": 6400
+          }
+        },
+        {
+          "endpoint": "/user/me",
+          "total_requests": 6400,
+          "successful_requests": 6400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 36.71125,
+          "p95_latency": 73,
+          "p99_latency": 138,
+          "status_codes": {
+            "200": 6400
+          }
+        },
+        {
+          "endpoint": "/user/active-and-inactive-users",
+          "total_requests": 6400,
+          "successful_requests": 6400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 100.71421875,
+          "p95_latency": 207,
+          "p99_latency": 296,
+          "status_codes": {
+            "200": 6400
+          }
+        },
+        {
+          "endpoint": "/user/get-user-skills/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 6400,
+          "successful_requests": 6400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 22.8284375,
+          "p95_latency": 39,
+          "p99_latency": 58,
+          "status_codes": {
+            "200": 6400
+          }
+        },
+        {
+          "endpoint": "/user/team/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 6400,
+          "successful_requests": 6400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 18.32109375,
+          "p95_latency": 30,
+          "p99_latency": 57,
+          "status_codes": {
+            "200": 6400
+          }
+        },
+        {
+          "endpoint": "/user/chat-users/",
+          "total_requests": 6400,
+          "successful_requests": 6400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 215.67734375,
+          "p95_latency": 287,
+          "p99_latency": 358,
+          "status_codes": {
+            "200": 6400
+          }
+        },
+        {
+          "endpoint": "/user/all-users",
+          "total_requests": 6400,
+          "successful_requests": 6400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 31.1903125,
+          "p95_latency": 61,
+          "p99_latency": 94,
+          "status_codes": {
+            "200": 6400
+          }
+        },
+        {
+          "endpoint": "/user/user-progress-details/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3/a915cb6e-0974-4fb8-9553-81f04ce7ca45",
+          "total_requests": 6400,
+          "successful_requests": 6400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 385.5946875,
+          "p95_latency": 844,
+          "p99_latency": 1266,
+          "status_codes": {
+            "200": 6400
+          }
+        },
+        {
+          "endpoint": "/goals/user-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 6400,
+          "successful_requests": 6400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 45.17390625,
+          "p95_latency": 83,
+          "p99_latency": 112,
+          "status_codes": {
+            "200": 6400
+          }
+        },
+        {
+          "endpoint": "/goals/manager-reportee/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 6400,
+          "successful_requests": 6400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 96.53046875,
+          "p95_latency": 185,
+          "p99_latency": 253,
+          "status_codes": {
+            "200": 6400
+          }
+        },
+        {
+          "endpoint": "/goals/eligible-reportees-for-cascade/5b39887b-6659-4d87-975f-508917131ea3",
+          "total_requests": 6400,
+          "successful_requests": 6400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 37.37578125,
+          "p95_latency": 73,
+          "p99_latency": 106,
+          "status_codes": {
+            "200": 6400
+          }
+        },
+        {
+          "endpoint": "/goals/get-goal-categories",
+          "total_requests": 6400,
+          "successful_requests": 6400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 14.92453125,
+          "p95_latency": 22,
+          "p99_latency": 30,
+          "status_codes": {
+            "200": 6400
+          }
+        },
+        {
+          "endpoint": "/goals/get-objectives-akrs-and-quadrants/a915cb6e-0974-4fb8-9553-81f04ce7ca45",
+          "total_requests": 6400,
+          "successful_requests": 6400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 63.00796875,
+          "p95_latency": 92,
+          "p99_latency": 111,
+          "status_codes": {
+            "200": 6400
+          }
+        },
+        {
+          "endpoint": "/goals/detailed-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 6400,
+          "successful_requests": 6400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 82.4796875,
+          "p95_latency": 156,
+          "p99_latency": 207,
+          "status_codes": {
+            "200": 6400
+          }
+        },
+        {
+          "endpoint": "/goals/cascade-json/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3",
+          "total_requests": 6400,
+          "successful_requests": 6400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 38.88734375,
+          "p95_latency": 85,
+          "p99_latency": 131,
+          "status_codes": {
+            "200": 6400
+          }
+        },
+        {
+          "endpoint": "/periods/previous-current-next",
+          "total_requests": 6400,
+          "successful_requests": 6400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 70.33546875,
+          "p95_latency": 123,
+          "p99_latency": 172,
+          "status_codes": {
+            "200": 6400
+          }
+        },
+        {
+          "endpoint": "/periods/5b39887b-6659-4d87-975f-508917131ea3/subperiods",
+          "total_requests": 6400,
+          "successful_requests": 6400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 17.4596875,
+          "p95_latency": 28,
+          "p99_latency": 37,
+          "status_codes": {
+            "200": 6400
+          }
+        },
+        {
+          "endpoint": "/cycles/",
+          "total_requests": 6400,
+          "successful_requests": 6400,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 15.38109375,
+          "p95_latency": 24,
+          "p99_latency": 32,
+          "status_codes": {
+            "200": 6400
+          }
+        }
+      ]
+    },
+    {
+      "concurrency": 10000,
+      "total_requests": 180000,
+      "successful_requests": 177301,
+      "failed_requests": 2699,
+      "success_rate": 98.50055555555556,
+      "rps": 182.4961967434678,
+      "mean_latency": 247.798,
+      "p95_latency": 389,
+      "p99_latency": 619,
+      "duration_seconds": 986.321924577,
+      "endpoints": [
+        {
+          "endpoint": "/auth/get-tenants",
+          "total_requests": 10000,
+          "successful_requests": 10000,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 409.1483,
+          "p95_latency": 557,
+          "p99_latency": 614,
+          "status_codes": {
+            "200": 10000
+          }
+        },
+        {
+          "endpoint": "/user/me",
+          "total_requests": 10000,
+          "successful_requests": 9683,
+          "failed_requests": 317,
+          "success_rate": 96.83,
+          "mean_latency": 930.1146,
+          "p95_latency": 53,
+          "p99_latency": 30000,
+          "status_codes": {
+            "500": 70,
+            "200": 9683,
+            "0": 247
+          }
+        },
+        {
+          "endpoint": "/user/active-and-inactive-users",
+          "total_requests": 10000,
+          "successful_requests": 9755,
+          "failed_requests": 245,
+          "success_rate": 97.55,
+          "mean_latency": 774.4938,
+          "p95_latency": 123,
+          "p99_latency": 30000,
+          "status_codes": {
+            "0": 219,
+            "500": 26,
+            "200": 9755
+          }
+        },
+        {
+          "endpoint": "/user/get-user-skills/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 10000,
+          "successful_requests": 9748,
+          "failed_requests": 252,
+          "success_rate": 97.48,
+          "mean_latency": 612.0379,
+          "p95_latency": 38,
+          "p99_latency": 30000,
+          "status_codes": {
+            "0": 156,
+            "502": 96,
+            "200": 9748
+          }
+        },
+        {
+          "endpoint": "/user/team/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 10000,
+          "successful_requests": 9749,
+          "failed_requests": 251,
+          "success_rate": 97.49,
+          "mean_latency": 15.6091,
+          "p95_latency": 24,
+          "p99_latency": 49,
+          "status_codes": {
+            "200": 9749,
+            "502": 251
+          }
+        },
+        {
+          "endpoint": "/user/chat-users/",
+          "total_requests": 10000,
+          "successful_requests": 9753,
+          "failed_requests": 247,
+          "success_rate": 97.53,
+          "mean_latency": 215.8915,
+          "p95_latency": 308,
+          "p99_latency": 409,
+          "status_codes": {
+            "502": 247,
+            "200": 9753
+          }
+        },
+        {
+          "endpoint": "/user/all-users",
+          "total_requests": 10000,
+          "successful_requests": 9750,
+          "failed_requests": 250,
+          "success_rate": 97.5,
+          "mean_latency": 25.6488,
+          "p95_latency": 46,
+          "p99_latency": 73,
+          "status_codes": {
+            "502": 250,
+            "200": 9750
+          }
+        },
+        {
+          "endpoint": "/user/user-progress-details/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3/a915cb6e-0974-4fb8-9553-81f04ce7ca45",
+          "total_requests": 10000,
+          "successful_requests": 9748,
+          "failed_requests": 252,
+          "success_rate": 97.48,
+          "mean_latency": 311.7427,
+          "p95_latency": 683,
+          "p99_latency": 1044,
+          "status_codes": {
+            "200": 9748,
+            "502": 252
+          }
+        },
+        {
+          "endpoint": "/goals/user-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 10000,
+          "successful_requests": 9750,
+          "failed_requests": 250,
+          "success_rate": 97.5,
+          "mean_latency": 36.7305,
+          "p95_latency": 68,
+          "p99_latency": 98,
+          "status_codes": {
+            "502": 250,
+            "200": 9750
+          }
+        },
+        {
+          "endpoint": "/goals/manager-reportee/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 10000,
+          "successful_requests": 9752,
+          "failed_requests": 248,
+          "success_rate": 97.52,
+          "mean_latency": 85.2626,
+          "p95_latency": 172,
+          "p99_latency": 246,
+          "status_codes": {
+            "502": 248,
+            "200": 9752
+          }
+        },
+        {
+          "endpoint": "/goals/eligible-reportees-for-cascade/5b39887b-6659-4d87-975f-508917131ea3",
+          "total_requests": 10000,
+          "successful_requests": 9866,
+          "failed_requests": 134,
+          "success_rate": 98.66,
+          "mean_latency": 30.8916,
+          "p95_latency": 58,
+          "p99_latency": 87,
+          "status_codes": {
+            "502": 134,
+            "200": 9866
+          }
+        },
+        {
+          "endpoint": "/goals/get-goal-categories",
+          "total_requests": 10000,
+          "successful_requests": 10000,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 13.5438,
+          "p95_latency": 19,
+          "p99_latency": 24,
+          "status_codes": {
+            "200": 10000
+          }
+        },
+        {
+          "endpoint": "/goals/get-objectives-akrs-and-quadrants/a915cb6e-0974-4fb8-9553-81f04ce7ca45",
+          "total_requests": 10000,
+          "successful_requests": 10000,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 61.8685,
+          "p95_latency": 85,
+          "p99_latency": 107,
+          "status_codes": {
+            "200": 10000
+          }
+        },
+        {
+          "endpoint": "/goals/detailed-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+          "total_requests": 10000,
+          "successful_requests": 10000,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 74.2891,
+          "p95_latency": 134,
+          "p99_latency": 184,
+          "status_codes": {
+            "200": 10000
+          }
+        },
+        {
+          "endpoint": "/goals/cascade-json/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3",
+          "total_requests": 10000,
+          "successful_requests": 10000,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 29.7866,
+          "p95_latency": 52,
+          "p99_latency": 73,
+          "status_codes": {
+            "200": 10000
+          }
+        },
+        {
+          "endpoint": "/periods/previous-current-next",
+          "total_requests": 10000,
+          "successful_requests": 10000,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 60.754,
+          "p95_latency": 104,
+          "p99_latency": 151,
+          "status_codes": {
+            "200": 10000
+          }
+        },
+        {
+          "endpoint": "/periods/5b39887b-6659-4d87-975f-508917131ea3/subperiods",
+          "total_requests": 10000,
+          "successful_requests": 10000,
+          "failed_requests": 0,
+          "success_rate": 100.0,
+          "mean_latency": 16.4986,
+          "p95_latency": 24,
+          "p99_latency": 34,
+          "status_codes": {
+            "200": 10000
+          }
+        },
+        {
+          "endpoint": "/cycles/",
+          "total_requests": 10000,
+          "successful_requests": 9747,
+          "failed_requests": 253,
+          "success_rate": 97.47,
+          "mean_latency": 756.052,
+          "p95_latency": 20,
+          "p99_latency": 30000,
+          "status_codes": {
+            "500": 31,
+            "200": 9747,
+            "0": 222
+          }
+        }
+      ]
+    }
+  ],
+  "base_url": "https://bev3-dev.lykkebook.com/api",
+  "endpoints_tested": [
+    "/auth/get-tenants",
+    "/user/me",
+    "/user/active-and-inactive-users",
+    "/user/get-user-skills/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+    "/user/team/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+    "/user/chat-users/",
+    "/user/all-users",
+    "/user/user-progress-details/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3/a915cb6e-0974-4fb8-9553-81f04ce7ca45",
+    "/goals/user-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+    "/goals/manager-reportee/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+    "/goals/eligible-reportees-for-cascade/5b39887b-6659-4d87-975f-508917131ea3",
+    "/goals/get-goal-categories",
+    "/goals/get-objectives-akrs-and-quadrants/a915cb6e-0974-4fb8-9553-81f04ce7ca45",
+    "/goals/detailed-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5",
+    "/goals/cascade-json/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3",
+    "/periods/previous-current-next",
+    "/periods/5b39887b-6659-4d87-975f-508917131ea3/subperiods",
+    "/cycles/"
+  ]
+}

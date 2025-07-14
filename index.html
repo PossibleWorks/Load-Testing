@@ -21,8 +21,8 @@
 <body>
     <div class="header">
         <h1>Load Test Report</h1>
-        <p>Generated on: 2025-07-14 16:29:23</p>
-        <p>Test Duration: 12.12 seconds</p>
+        <p>Generated on: 2025-07-14 18:10:26</p>
+        <p>Test Duration: 2351.56 seconds</p>
     </div>
 
     <div class="section">
@@ -42,8 +42,8 @@
             <tr><th>Parameter</th><th>Value</th></tr>
             <tr><td>Base URL</td><td>https://bev3-dev.lykkebook.com/api</td></tr>
             <tr><td>Total Endpoints Tested</td><td>18</td></tr>
-            <tr><td>Test Start Time</td><td>2025-07-14 16:29:11</td></tr>
-            <tr><td>Test End Time</td><td>2025-07-14 16:29:23</td></tr>
+            <tr><td>Test Start Time</td><td>2025-07-14 17:31:15</td></tr>
+            <tr><td>Test End Time</td><td>2025-07-14 18:10:26</td></tr>
         </table>
     </div>
 
@@ -52,48 +52,180 @@
         <div class="metrics">
             <div class="metric-box">
                 <h3>Total Requests</h3>
-                <h2>900</h2>
+                <h2>406800</h2>
             </div>
             <div class="metric-box">
                 <h3>Success Rate</h3>
-                <h2>100.00%</h2>
+                <h2>99.06%</h2>
             </div>
             <div class="metric-box">
                 <h3>Average RPS</h3>
-                <h2>74.23</h2>
+                <h2>172.99</h2>
             </div>
             <div class="metric-box">
                 <h3>Mean Latency</h3>
-                <h2>5440.17ms</h2>
+                <h2>256.44ms</h2>
             </div>
         </div>
 
         <table class="summary-table">
             <tr><th>Metric</th><th>Value</th></tr>
-            <tr><td>Total Requests</td><td>900</td></tr>
-            <tr><td>Successful Requests</td><td>900</td></tr>
-            <tr><td>Failed Requests</td><td>0</td></tr>
-            <tr><td>Success Rate</td><td>100.00%</td></tr>
-            <tr><td>Average RPS</td><td>74.23 req/sec</td></tr>
-            <tr><td>Mean Latency</td><td>5440.17ms</td></tr>
-            <tr><td>95th Percentile Latency</td><td>10020ms</td></tr>
-            <tr><td>99th Percentile Latency</td><td>10020ms</td></tr>
+            <tr><td>Total Requests</td><td>406800</td></tr>
+            <tr><td>Successful Requests</td><td>402984</td></tr>
+            <tr><td>Failed Requests</td><td>3816</td></tr>
+            <tr><td>Success Rate</td><td>99.06%</td></tr>
+            <tr><td>Average RPS</td><td>172.99 req/sec</td></tr>
+            <tr><td>Mean Latency</td><td>256.44ms</td></tr>
+            <tr><td>95th Percentile Latency</td><td>774ms</td></tr>
+            <tr><td>99th Percentile Latency</td><td>1666ms</td></tr>
         </table>
     </div>
 
     <div class="section">
-        <h2>4. Scenario Results</h2>
+        <h2>4. Scaling Analysis & Comparison</h2>
         
-        <h3>Scenario 1 - Concurrency: 50</h3>
+        <p><strong>Scaling Test Summary:</strong> This test evaluated system performance across 7 concurrency levels, 
+        from 200 to 10000 concurrent connections. Total of 406800 requests were processed across all scenarios.</p>
+        
+        <h4>Performance Characteristics:</h4>
+        <ul>
+            <li><strong>Linear Scaling:</strong> No (Performance improved consistently with load)</li>
+            <li><strong>Peak Performance:</strong> Achieved at 6400 concurrent connections</li>
+            <li><strong>Degradation Point:</strong> Performance issues start at 200 concurrent connections</li>
+            <li><strong>Resource Efficiency:</strong> 68.0x improvement from baseline to peak</li>
+        </ul>
+        
+        <h3>Performance Trends</h3>
+        <table class="summary-table">
+            <tr>
+                <th>Concurrency</th>
+                <th>Total Requests</th>
+                <th>Success Rate (%)</th>
+                <th>RPS</th>
+                <th>Mean Latency (ms)</th>
+                <th>P95 Latency (ms)</th>
+                <th>P99 Latency (ms)</th>
+                <th>Duration (s)</th>
+                <th>Performance Score</th>
+            </tr>
+            
+            <tr>
+                <td>200</td>
+                <td>3600</td>
+                <td>74.00</td>
+                <td>6.46</td>
+                <td>7241.96</td>
+                <td>30000</td>
+                <td>30000</td>
+                <td>557.51</td>
+                <td>0.0</td>
+            </tr>
+            <tr>
+                <td>400</td>
+                <td>7200</td>
+                <td>100.00</td>
+                <td>92.42</td>
+                <td>441.26</td>
+                <td>1581</td>
+                <td>2548</td>
+                <td>77.91</td>
+                <td>0.0</td>
+            </tr>
+            <tr>
+                <td>800</td>
+                <td>14400</td>
+                <td>100.00</td>
+                <td>170.65</td>
+                <td>242.73</td>
+                <td>693</td>
+                <td>1607</td>
+                <td>84.38</td>
+                <td>0.0</td>
+            </tr>
+            <tr>
+                <td>1600</td>
+                <td>28800</td>
+                <td>99.37</td>
+                <td>127.12</td>
+                <td>340.43</td>
+                <td>666</td>
+                <td>3453</td>
+                <td>226.57</td>
+                <td>0.0</td>
+            </tr>
+            <tr>
+                <td>3200</td>
+                <td>57600</td>
+                <td>100.00</td>
+                <td>368.78</td>
+                <td>112.73</td>
+                <td>442</td>
+                <td>677</td>
+                <td>156.19</td>
+                <td>2.6</td>
+            </tr>
+            <tr>
+                <td>6400</td>
+                <td>115200</td>
+                <td>100.00</td>
+                <td>438.90</td>
+                <td>94.48</td>
+                <td>393</td>
+                <td>592</td>
+                <td>262.47</td>
+                <td>3.4</td>
+            </tr>
+            <tr>
+                <td>10000</td>
+                <td>180000</td>
+                <td>98.50</td>
+                <td>182.50</td>
+                <td>247.80</td>
+                <td>389</td>
+                <td>619</td>
+                <td>986.32</td>
+                <td>0.0</td>
+            </tr>
+        </table>
+        
+        <h3>Key Performance Insights</h3>
+        <div class="metrics">
+            <div class="metric-box">
+                <h4>Best Performing Concurrency</h4>
+                <h3>6400</h3>
+                <p>Highest RPS with good latency</p>
+            </div>
+            <div class="metric-box">
+                <h4>Breaking Point</h4>
+                <h3>200</h3>
+                <p>Where performance degrades</p>
+            </div>
+            <div class="metric-box">
+                <h4>Optimal Load Range</h4>
+                <h3>3200 - 6400</h3>
+                <p>Recommended operating range</p>
+            </div>
+            <div class="metric-box">
+                <h4>Scalability Factor</h4>
+                <h3>68.0x</h3>
+                <p>Performance improvement ratio</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>5. Detailed Scenario Results</h2>
+        
+        <h3>Scenario 1 - Concurrency: 200</h3>
         <table class="summary-table">
             <tr><th>Metric</th><th>Value</th></tr>
-            <tr><td>Concurrency</td><td>50</td></tr>
-            <tr><td>Total Requests</td><td>900</td></tr>
-            <tr><td>Success Rate</td><td>100.00%</td></tr>
-            <tr><td>RPS</td><td>74.24</td></tr>
-            <tr><td>Mean Latency</td><td>5440.64ms</td></tr>
-            <tr><td>P95 Latency</td><td>10443ms</td></tr>
-            <tr><td>Duration</td><td>12.12s</td></tr>
+            <tr><td>Concurrency</td><td>200</td></tr>
+            <tr><td>Total Requests</td><td>3600</td></tr>
+            <tr><td>Success Rate</td><td>74.00%</td></tr>
+            <tr><td>RPS</td><td>6.46</td></tr>
+            <tr><td>Mean Latency</td><td>7241.96ms</td></tr>
+            <tr><td>P95 Latency</td><td>30000ms</td></tr>
+            <tr><td>Duration</td><td>557.51s</td></tr>
         </table>
 
         <h4>Endpoint Details:</h4>
@@ -110,191 +242,1329 @@
             
             <tr>
                 <td>/auth/get-tenants</td>
-                <td>50</td>
-                <td>50</td>
+                <td>200</td>
+                <td>200</td>
                 <td>0</td>
                 <td>100.00%</td>
-                <td>6761.38ms</td>
-                <td>12106ms</td>
+                <td>874.99ms</td>
+                <td>995ms</td>
             </tr>
             <tr>
                 <td>/user/me</td>
-                <td>50</td>
-                <td>50</td>
+                <td>200</td>
                 <td>0</td>
-                <td>100.00%</td>
-                <td>4050.72ms</td>
-                <td>7604ms</td>
+                <td>200</td>
+                <td>0.00%</td>
+                <td>29233.62ms</td>
+                <td>30000ms</td>
             </tr>
             <tr>
                 <td>/user/active-and-inactive-users</td>
-                <td>50</td>
-                <td>50</td>
+                <td>200</td>
                 <td>0</td>
-                <td>100.00%</td>
-                <td>4633.66ms</td>
-                <td>10454ms</td>
+                <td>200</td>
+                <td>0.00%</td>
+                <td>29957.26ms</td>
+                <td>30000ms</td>
             </tr>
             <tr>
                 <td>/user/get-user-skills/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
-                <td>50</td>
-                <td>50</td>
+                <td>200</td>
                 <td>0</td>
-                <td>100.00%</td>
-                <td>3802.26ms</td>
-                <td>7711ms</td>
+                <td>200</td>
+                <td>0.00%</td>
+                <td>30000.00ms</td>
+                <td>30000ms</td>
             </tr>
             <tr>
                 <td>/user/team/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
-                <td>50</td>
-                <td>50</td>
-                <td>0</td>
-                <td>100.00%</td>
-                <td>4122.52ms</td>
-                <td>10087ms</td>
+                <td>200</td>
+                <td>89</td>
+                <td>111</td>
+                <td>44.50%</td>
+                <td>17119.81ms</td>
+                <td>30000ms</td>
             </tr>
             <tr>
                 <td>/user/chat-users/</td>
-                <td>50</td>
-                <td>50</td>
-                <td>0</td>
-                <td>100.00%</td>
-                <td>4582.94ms</td>
-                <td>9020ms</td>
+                <td>200</td>
+                <td>135</td>
+                <td>65</td>
+                <td>67.50%</td>
+                <td>3344.26ms</td>
+                <td>12855ms</td>
             </tr>
             <tr>
                 <td>/user/all-users</td>
-                <td>50</td>
-                <td>50</td>
-                <td>0</td>
-                <td>100.00%</td>
-                <td>5767.26ms</td>
-                <td>10223ms</td>
+                <td>200</td>
+                <td>135</td>
+                <td>65</td>
+                <td>67.50%</td>
+                <td>362.57ms</td>
+                <td>1076ms</td>
             </tr>
             <tr>
                 <td>/user/user-progress-details/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3/a915cb6e-0974-4fb8-9553-81f04ce7ca45</td>
-                <td>50</td>
-                <td>50</td>
-                <td>0</td>
-                <td>100.00%</td>
-                <td>10020.96ms</td>
-                <td>11809ms</td>
+                <td>200</td>
+                <td>174</td>
+                <td>26</td>
+                <td>87.00%</td>
+                <td>4001.53ms</td>
+                <td>6361ms</td>
             </tr>
             <tr>
                 <td>/goals/user-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
-                <td>50</td>
-                <td>50</td>
+                <td>200</td>
+                <td>200</td>
                 <td>0</td>
                 <td>100.00%</td>
-                <td>4047.52ms</td>
-                <td>8525ms</td>
+                <td>596.05ms</td>
+                <td>811ms</td>
             </tr>
             <tr>
                 <td>/goals/manager-reportee/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
-                <td>50</td>
-                <td>50</td>
+                <td>200</td>
+                <td>200</td>
                 <td>0</td>
                 <td>100.00%</td>
-                <td>4296.40ms</td>
-                <td>7714ms</td>
+                <td>1348.16ms</td>
+                <td>1781ms</td>
             </tr>
             <tr>
                 <td>/goals/eligible-reportees-for-cascade/5b39887b-6659-4d87-975f-508917131ea3</td>
-                <td>50</td>
-                <td>50</td>
+                <td>200</td>
+                <td>200</td>
                 <td>0</td>
                 <td>100.00%</td>
-                <td>4203.08ms</td>
-                <td>8540ms</td>
+                <td>594.32ms</td>
+                <td>1051ms</td>
             </tr>
             <tr>
                 <td>/goals/get-goal-categories</td>
-                <td>50</td>
-                <td>50</td>
+                <td>200</td>
+                <td>200</td>
                 <td>0</td>
                 <td>100.00%</td>
-                <td>4889.60ms</td>
-                <td>8674ms</td>
+                <td>224.46ms</td>
+                <td>275ms</td>
             </tr>
             <tr>
                 <td>/goals/get-objectives-akrs-and-quadrants/a915cb6e-0974-4fb8-9553-81f04ce7ca45</td>
-                <td>50</td>
-                <td>50</td>
+                <td>200</td>
+                <td>200</td>
                 <td>0</td>
                 <td>100.00%</td>
-                <td>5608.54ms</td>
-                <td>9022ms</td>
+                <td>613.12ms</td>
+                <td>806ms</td>
             </tr>
             <tr>
                 <td>/goals/detailed-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
-                <td>50</td>
-                <td>50</td>
-                <td>0</td>
-                <td>100.00%</td>
-                <td>6555.78ms</td>
-                <td>10029ms</td>
+                <td>200</td>
+                <td>199</td>
+                <td>1</td>
+                <td>99.50%</td>
+                <td>1048.11ms</td>
+                <td>1304ms</td>
             </tr>
             <tr>
                 <td>/goals/cascade-json/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3</td>
-                <td>50</td>
-                <td>50</td>
+                <td>200</td>
+                <td>200</td>
                 <td>0</td>
                 <td>100.00%</td>
-                <td>6149.62ms</td>
-                <td>9653ms</td>
+                <td>596.57ms</td>
+                <td>734ms</td>
             </tr>
             <tr>
                 <td>/periods/previous-current-next</td>
-                <td>50</td>
-                <td>50</td>
-                <td>0</td>
-                <td>100.00%</td>
-                <td>7672.14ms</td>
-                <td>10443ms</td>
+                <td>200</td>
+                <td>146</td>
+                <td>54</td>
+                <td>73.00%</td>
+                <td>8241.30ms</td>
+                <td>30000ms</td>
             </tr>
             <tr>
                 <td>/periods/5b39887b-6659-4d87-975f-508917131ea3/subperiods</td>
-                <td>50</td>
-                <td>50</td>
+                <td>200</td>
+                <td>200</td>
                 <td>0</td>
                 <td>100.00%</td>
-                <td>4473.10ms</td>
-                <td>8698ms</td>
+                <td>203.16ms</td>
+                <td>454ms</td>
             </tr>
             <tr>
                 <td>/cycles/</td>
-                <td>50</td>
-                <td>50</td>
+                <td>200</td>
+                <td>186</td>
+                <td>14</td>
+                <td>93.00%</td>
+                <td>1996.04ms</td>
+                <td>15568ms</td>
+            </tr>
+        </table>
+        
+        <h3>Scenario 2 - Concurrency: 400</h3>
+        <table class="summary-table">
+            <tr><th>Metric</th><th>Value</th></tr>
+            <tr><td>Concurrency</td><td>400</td></tr>
+            <tr><td>Total Requests</td><td>7200</td></tr>
+            <tr><td>Success Rate</td><td>100.00%</td></tr>
+            <tr><td>RPS</td><td>92.42</td></tr>
+            <tr><td>Mean Latency</td><td>441.26ms</td></tr>
+            <tr><td>P95 Latency</td><td>1581ms</td></tr>
+            <tr><td>Duration</td><td>77.91s</td></tr>
+        </table>
+
+        <h4>Endpoint Details:</h4>
+        <table class="endpoint-table">
+            <tr>
+                <th>Endpoint</th>
+                <th>Requests</th>
+                <th>Success</th>
+                <th>Errors</th>
+                <th>Success Rate</th>
+                <th>Mean Latency</th>
+                <th>P95 Latency</th>
+            </tr>
+            
+            <tr>
+                <td>/auth/get-tenants</td>
+                <td>400</td>
+                <td>400</td>
                 <td>0</td>
                 <td>100.00%</td>
-                <td>6294.00ms</td>
-                <td>9250ms</td>
+                <td>606.35ms</td>
+                <td>791ms</td>
+            </tr>
+            <tr>
+                <td>/user/me</td>
+                <td>400</td>
+                <td>400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>289.16ms</td>
+                <td>664ms</td>
+            </tr>
+            <tr>
+                <td>/user/active-and-inactive-users</td>
+                <td>400</td>
+                <td>400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>676.22ms</td>
+                <td>1079ms</td>
+            </tr>
+            <tr>
+                <td>/user/get-user-skills/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>400</td>
+                <td>400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>221.20ms</td>
+                <td>393ms</td>
+            </tr>
+            <tr>
+                <td>/user/team/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>400</td>
+                <td>400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>174.83ms</td>
+                <td>309ms</td>
+            </tr>
+            <tr>
+                <td>/user/chat-users/</td>
+                <td>400</td>
+                <td>400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>610.28ms</td>
+                <td>999ms</td>
+            </tr>
+            <tr>
+                <td>/user/all-users</td>
+                <td>400</td>
+                <td>400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>262.28ms</td>
+                <td>356ms</td>
+            </tr>
+            <tr>
+                <td>/user/user-progress-details/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3/a915cb6e-0974-4fb8-9553-81f04ce7ca45</td>
+                <td>400</td>
+                <td>400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>2170.45ms</td>
+                <td>3130ms</td>
+            </tr>
+            <tr>
+                <td>/goals/user-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>400</td>
+                <td>400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>306.04ms</td>
+                <td>417ms</td>
+            </tr>
+            <tr>
+                <td>/goals/manager-reportee/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>400</td>
+                <td>400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>581.20ms</td>
+                <td>792ms</td>
+            </tr>
+            <tr>
+                <td>/goals/eligible-reportees-for-cascade/5b39887b-6659-4d87-975f-508917131ea3</td>
+                <td>400</td>
+                <td>400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>278.83ms</td>
+                <td>423ms</td>
+            </tr>
+            <tr>
+                <td>/goals/get-goal-categories</td>
+                <td>400</td>
+                <td>400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>126.19ms</td>
+                <td>212ms</td>
+            </tr>
+            <tr>
+                <td>/goals/get-objectives-akrs-and-quadrants/a915cb6e-0974-4fb8-9553-81f04ce7ca45</td>
+                <td>400</td>
+                <td>400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>316.43ms</td>
+                <td>459ms</td>
+            </tr>
+            <tr>
+                <td>/goals/detailed-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>400</td>
+                <td>400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>478.77ms</td>
+                <td>653ms</td>
+            </tr>
+            <tr>
+                <td>/goals/cascade-json/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3</td>
+                <td>400</td>
+                <td>400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>275.47ms</td>
+                <td>430ms</td>
+            </tr>
+            <tr>
+                <td>/periods/previous-current-next</td>
+                <td>400</td>
+                <td>400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>399.93ms</td>
+                <td>656ms</td>
+            </tr>
+            <tr>
+                <td>/periods/5b39887b-6659-4d87-975f-508917131ea3/subperiods</td>
+                <td>400</td>
+                <td>400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>93.06ms</td>
+                <td>254ms</td>
+            </tr>
+            <tr>
+                <td>/cycles/</td>
+                <td>400</td>
+                <td>400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>76.02ms</td>
+                <td>184ms</td>
+            </tr>
+        </table>
+        
+        <h3>Scenario 3 - Concurrency: 800</h3>
+        <table class="summary-table">
+            <tr><th>Metric</th><th>Value</th></tr>
+            <tr><td>Concurrency</td><td>800</td></tr>
+            <tr><td>Total Requests</td><td>14400</td></tr>
+            <tr><td>Success Rate</td><td>100.00%</td></tr>
+            <tr><td>RPS</td><td>170.65</td></tr>
+            <tr><td>Mean Latency</td><td>242.73ms</td></tr>
+            <tr><td>P95 Latency</td><td>693ms</td></tr>
+            <tr><td>Duration</td><td>84.38s</td></tr>
+        </table>
+
+        <h4>Endpoint Details:</h4>
+        <table class="endpoint-table">
+            <tr>
+                <th>Endpoint</th>
+                <th>Requests</th>
+                <th>Success</th>
+                <th>Errors</th>
+                <th>Success Rate</th>
+                <th>Mean Latency</th>
+                <th>P95 Latency</th>
+            </tr>
+            
+            <tr>
+                <td>/auth/get-tenants</td>
+                <td>800</td>
+                <td>800</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>526.75ms</td>
+                <td>672ms</td>
+            </tr>
+            <tr>
+                <td>/user/me</td>
+                <td>800</td>
+                <td>800</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>137.17ms</td>
+                <td>315ms</td>
+            </tr>
+            <tr>
+                <td>/user/active-and-inactive-users</td>
+                <td>800</td>
+                <td>800</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>327.04ms</td>
+                <td>637ms</td>
+            </tr>
+            <tr>
+                <td>/user/get-user-skills/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>800</td>
+                <td>800</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>114.42ms</td>
+                <td>329ms</td>
+            </tr>
+            <tr>
+                <td>/user/team/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>800</td>
+                <td>800</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>88.11ms</td>
+                <td>205ms</td>
+            </tr>
+            <tr>
+                <td>/user/chat-users/</td>
+                <td>800</td>
+                <td>800</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>302.48ms</td>
+                <td>670ms</td>
+            </tr>
+            <tr>
+                <td>/user/all-users</td>
+                <td>800</td>
+                <td>800</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>140.25ms</td>
+                <td>388ms</td>
+            </tr>
+            <tr>
+                <td>/user/user-progress-details/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3/a915cb6e-0974-4fb8-9553-81f04ce7ca45</td>
+                <td>800</td>
+                <td>800</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>1178.96ms</td>
+                <td>2823ms</td>
+            </tr>
+            <tr>
+                <td>/goals/user-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>800</td>
+                <td>800</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>159.42ms</td>
+                <td>449ms</td>
+            </tr>
+            <tr>
+                <td>/goals/manager-reportee/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>800</td>
+                <td>800</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>299.44ms</td>
+                <td>686ms</td>
+            </tr>
+            <tr>
+                <td>/goals/eligible-reportees-for-cascade/5b39887b-6659-4d87-975f-508917131ea3</td>
+                <td>800</td>
+                <td>800</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>145.32ms</td>
+                <td>407ms</td>
+            </tr>
+            <tr>
+                <td>/goals/get-goal-categories</td>
+                <td>800</td>
+                <td>800</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>59.98ms</td>
+                <td>103ms</td>
+            </tr>
+            <tr>
+                <td>/goals/get-objectives-akrs-and-quadrants/a915cb6e-0974-4fb8-9553-81f04ce7ca45</td>
+                <td>800</td>
+                <td>800</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>157.87ms</td>
+                <td>397ms</td>
+            </tr>
+            <tr>
+                <td>/goals/detailed-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>800</td>
+                <td>800</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>233.19ms</td>
+                <td>451ms</td>
+            </tr>
+            <tr>
+                <td>/goals/cascade-json/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3</td>
+                <td>800</td>
+                <td>800</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>137.30ms</td>
+                <td>273ms</td>
+            </tr>
+            <tr>
+                <td>/periods/previous-current-next</td>
+                <td>800</td>
+                <td>800</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>220.50ms</td>
+                <td>463ms</td>
+            </tr>
+            <tr>
+                <td>/periods/5b39887b-6659-4d87-975f-508917131ea3/subperiods</td>
+                <td>800</td>
+                <td>800</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>72.95ms</td>
+                <td>141ms</td>
+            </tr>
+            <tr>
+                <td>/cycles/</td>
+                <td>800</td>
+                <td>800</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>67.93ms</td>
+                <td>150ms</td>
+            </tr>
+        </table>
+        
+        <h3>Scenario 4 - Concurrency: 1600</h3>
+        <table class="summary-table">
+            <tr><th>Metric</th><th>Value</th></tr>
+            <tr><td>Concurrency</td><td>1600</td></tr>
+            <tr><td>Total Requests</td><td>28800</td></tr>
+            <tr><td>Success Rate</td><td>99.37%</td></tr>
+            <tr><td>RPS</td><td>127.12</td></tr>
+            <tr><td>Mean Latency</td><td>340.43ms</td></tr>
+            <tr><td>P95 Latency</td><td>666ms</td></tr>
+            <tr><td>Duration</td><td>226.57s</td></tr>
+        </table>
+
+        <h4>Endpoint Details:</h4>
+        <table class="endpoint-table">
+            <tr>
+                <th>Endpoint</th>
+                <th>Requests</th>
+                <th>Success</th>
+                <th>Errors</th>
+                <th>Success Rate</th>
+                <th>Mean Latency</th>
+                <th>P95 Latency</th>
+            </tr>
+            
+            <tr>
+                <td>/auth/get-tenants</td>
+                <td>1600</td>
+                <td>1600</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>532.58ms</td>
+                <td>691ms</td>
+            </tr>
+            <tr>
+                <td>/user/me</td>
+                <td>1600</td>
+                <td>1600</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>128.07ms</td>
+                <td>320ms</td>
+            </tr>
+            <tr>
+                <td>/user/active-and-inactive-users</td>
+                <td>1600</td>
+                <td>1600</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>327.05ms</td>
+                <td>863ms</td>
+            </tr>
+            <tr>
+                <td>/user/get-user-skills/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>1600</td>
+                <td>1600</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>101.08ms</td>
+                <td>247ms</td>
+            </tr>
+            <tr>
+                <td>/user/team/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>1600</td>
+                <td>1600</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>79.85ms</td>
+                <td>225ms</td>
+            </tr>
+            <tr>
+                <td>/user/chat-users/</td>
+                <td>1600</td>
+                <td>1600</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>294.87ms</td>
+                <td>1129ms</td>
+            </tr>
+            <tr>
+                <td>/user/all-users</td>
+                <td>1600</td>
+                <td>1600</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>135.88ms</td>
+                <td>468ms</td>
+            </tr>
+            <tr>
+                <td>/user/user-progress-details/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3/a915cb6e-0974-4fb8-9553-81f04ce7ca45</td>
+                <td>1600</td>
+                <td>1506</td>
+                <td>94</td>
+                <td>94.12%</td>
+                <td>1962.82ms</td>
+                <td>14146ms</td>
+            </tr>
+            <tr>
+                <td>/goals/user-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>1600</td>
+                <td>1600</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>114.09ms</td>
+                <td>334ms</td>
+            </tr>
+            <tr>
+                <td>/goals/manager-reportee/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>1600</td>
+                <td>1599</td>
+                <td>1</td>
+                <td>99.94%</td>
+                <td>248.20ms</td>
+                <td>997ms</td>
+            </tr>
+            <tr>
+                <td>/goals/eligible-reportees-for-cascade/5b39887b-6659-4d87-975f-508917131ea3</td>
+                <td>1600</td>
+                <td>1600</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>106.58ms</td>
+                <td>379ms</td>
+            </tr>
+            <tr>
+                <td>/goals/get-goal-categories</td>
+                <td>1600</td>
+                <td>1600</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>38.92ms</td>
+                <td>108ms</td>
+            </tr>
+            <tr>
+                <td>/goals/get-objectives-akrs-and-quadrants/a915cb6e-0974-4fb8-9553-81f04ce7ca45</td>
+                <td>1600</td>
+                <td>1514</td>
+                <td>86</td>
+                <td>94.62%</td>
+                <td>1666.41ms</td>
+                <td>19733ms</td>
+            </tr>
+            <tr>
+                <td>/goals/detailed-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>1600</td>
+                <td>1600</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>148.37ms</td>
+                <td>464ms</td>
+            </tr>
+            <tr>
+                <td>/goals/cascade-json/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3</td>
+                <td>1600</td>
+                <td>1600</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>73.27ms</td>
+                <td>162ms</td>
+            </tr>
+            <tr>
+                <td>/periods/previous-current-next</td>
+                <td>1600</td>
+                <td>1600</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>117.28ms</td>
+                <td>249ms</td>
+            </tr>
+            <tr>
+                <td>/periods/5b39887b-6659-4d87-975f-508917131ea3/subperiods</td>
+                <td>1600</td>
+                <td>1600</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>30.27ms</td>
+                <td>60ms</td>
+            </tr>
+            <tr>
+                <td>/cycles/</td>
+                <td>1600</td>
+                <td>1600</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>22.15ms</td>
+                <td>42ms</td>
+            </tr>
+        </table>
+        
+        <h3>Scenario 5 - Concurrency: 3200</h3>
+        <table class="summary-table">
+            <tr><th>Metric</th><th>Value</th></tr>
+            <tr><td>Concurrency</td><td>3200</td></tr>
+            <tr><td>Total Requests</td><td>57600</td></tr>
+            <tr><td>Success Rate</td><td>100.00%</td></tr>
+            <tr><td>RPS</td><td>368.78</td></tr>
+            <tr><td>Mean Latency</td><td>112.73ms</td></tr>
+            <tr><td>P95 Latency</td><td>442ms</td></tr>
+            <tr><td>Duration</td><td>156.19s</td></tr>
+        </table>
+
+        <h4>Endpoint Details:</h4>
+        <table class="endpoint-table">
+            <tr>
+                <th>Endpoint</th>
+                <th>Requests</th>
+                <th>Success</th>
+                <th>Errors</th>
+                <th>Success Rate</th>
+                <th>Mean Latency</th>
+                <th>P95 Latency</th>
+            </tr>
+            
+            <tr>
+                <td>/auth/get-tenants</td>
+                <td>3200</td>
+                <td>3200</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>440.74ms</td>
+                <td>596ms</td>
+            </tr>
+            <tr>
+                <td>/user/me</td>
+                <td>3200</td>
+                <td>3200</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>96.89ms</td>
+                <td>181ms</td>
+            </tr>
+            <tr>
+                <td>/user/active-and-inactive-users</td>
+                <td>3200</td>
+                <td>3200</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>177.17ms</td>
+                <td>476ms</td>
+            </tr>
+            <tr>
+                <td>/user/get-user-skills/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>3200</td>
+                <td>3200</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>47.01ms</td>
+                <td>93ms</td>
+            </tr>
+            <tr>
+                <td>/user/team/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>3200</td>
+                <td>3200</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>27.07ms</td>
+                <td>59ms</td>
+            </tr>
+            <tr>
+                <td>/user/chat-users/</td>
+                <td>3200</td>
+                <td>3200</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>219.29ms</td>
+                <td>314ms</td>
+            </tr>
+            <tr>
+                <td>/user/all-users</td>
+                <td>3200</td>
+                <td>3200</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>66.52ms</td>
+                <td>208ms</td>
+            </tr>
+            <tr>
+                <td>/user/user-progress-details/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3/a915cb6e-0974-4fb8-9553-81f04ce7ca45</td>
+                <td>3200</td>
+                <td>3200</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>412.96ms</td>
+                <td>928ms</td>
+            </tr>
+            <tr>
+                <td>/goals/user-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>3200</td>
+                <td>3200</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>50.31ms</td>
+                <td>105ms</td>
+            </tr>
+            <tr>
+                <td>/goals/manager-reportee/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>3200</td>
+                <td>3200</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>104.40ms</td>
+                <td>210ms</td>
+            </tr>
+            <tr>
+                <td>/goals/eligible-reportees-for-cascade/5b39887b-6659-4d87-975f-508917131ea3</td>
+                <td>3200</td>
+                <td>3200</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>82.85ms</td>
+                <td>98ms</td>
+            </tr>
+            <tr>
+                <td>/goals/get-goal-categories</td>
+                <td>3200</td>
+                <td>3200</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>14.35ms</td>
+                <td>20ms</td>
+            </tr>
+            <tr>
+                <td>/goals/get-objectives-akrs-and-quadrants/a915cb6e-0974-4fb8-9553-81f04ce7ca45</td>
+                <td>3200</td>
+                <td>3200</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>65.22ms</td>
+                <td>103ms</td>
+            </tr>
+            <tr>
+                <td>/goals/detailed-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>3200</td>
+                <td>3200</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>82.69ms</td>
+                <td>158ms</td>
+            </tr>
+            <tr>
+                <td>/goals/cascade-json/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3</td>
+                <td>3200</td>
+                <td>3200</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>37.92ms</td>
+                <td>73ms</td>
+            </tr>
+            <tr>
+                <td>/periods/previous-current-next</td>
+                <td>3200</td>
+                <td>3200</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>70.58ms</td>
+                <td>124ms</td>
+            </tr>
+            <tr>
+                <td>/periods/5b39887b-6659-4d87-975f-508917131ea3/subperiods</td>
+                <td>3200</td>
+                <td>3200</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>17.66ms</td>
+                <td>27ms</td>
+            </tr>
+            <tr>
+                <td>/cycles/</td>
+                <td>3200</td>
+                <td>3200</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>15.54ms</td>
+                <td>24ms</td>
+            </tr>
+        </table>
+        
+        <h3>Scenario 6 - Concurrency: 6400</h3>
+        <table class="summary-table">
+            <tr><th>Metric</th><th>Value</th></tr>
+            <tr><td>Concurrency</td><td>6400</td></tr>
+            <tr><td>Total Requests</td><td>115200</td></tr>
+            <tr><td>Success Rate</td><td>100.00%</td></tr>
+            <tr><td>RPS</td><td>438.90</td></tr>
+            <tr><td>Mean Latency</td><td>94.48ms</td></tr>
+            <tr><td>P95 Latency</td><td>393ms</td></tr>
+            <tr><td>Duration</td><td>262.47s</td></tr>
+        </table>
+
+        <h4>Endpoint Details:</h4>
+        <table class="endpoint-table">
+            <tr>
+                <th>Endpoint</th>
+                <th>Requests</th>
+                <th>Success</th>
+                <th>Errors</th>
+                <th>Success Rate</th>
+                <th>Mean Latency</th>
+                <th>P95 Latency</th>
+            </tr>
+            
+            <tr>
+                <td>/auth/get-tenants</td>
+                <td>6400</td>
+                <td>6400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>407.98ms</td>
+                <td>562ms</td>
+            </tr>
+            <tr>
+                <td>/user/me</td>
+                <td>6400</td>
+                <td>6400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>36.71ms</td>
+                <td>73ms</td>
+            </tr>
+            <tr>
+                <td>/user/active-and-inactive-users</td>
+                <td>6400</td>
+                <td>6400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>100.71ms</td>
+                <td>207ms</td>
+            </tr>
+            <tr>
+                <td>/user/get-user-skills/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>6400</td>
+                <td>6400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>22.83ms</td>
+                <td>39ms</td>
+            </tr>
+            <tr>
+                <td>/user/team/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>6400</td>
+                <td>6400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>18.32ms</td>
+                <td>30ms</td>
+            </tr>
+            <tr>
+                <td>/user/chat-users/</td>
+                <td>6400</td>
+                <td>6400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>215.68ms</td>
+                <td>287ms</td>
+            </tr>
+            <tr>
+                <td>/user/all-users</td>
+                <td>6400</td>
+                <td>6400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>31.19ms</td>
+                <td>61ms</td>
+            </tr>
+            <tr>
+                <td>/user/user-progress-details/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3/a915cb6e-0974-4fb8-9553-81f04ce7ca45</td>
+                <td>6400</td>
+                <td>6400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>385.59ms</td>
+                <td>844ms</td>
+            </tr>
+            <tr>
+                <td>/goals/user-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>6400</td>
+                <td>6400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>45.17ms</td>
+                <td>83ms</td>
+            </tr>
+            <tr>
+                <td>/goals/manager-reportee/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>6400</td>
+                <td>6400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>96.53ms</td>
+                <td>185ms</td>
+            </tr>
+            <tr>
+                <td>/goals/eligible-reportees-for-cascade/5b39887b-6659-4d87-975f-508917131ea3</td>
+                <td>6400</td>
+                <td>6400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>37.38ms</td>
+                <td>73ms</td>
+            </tr>
+            <tr>
+                <td>/goals/get-goal-categories</td>
+                <td>6400</td>
+                <td>6400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>14.92ms</td>
+                <td>22ms</td>
+            </tr>
+            <tr>
+                <td>/goals/get-objectives-akrs-and-quadrants/a915cb6e-0974-4fb8-9553-81f04ce7ca45</td>
+                <td>6400</td>
+                <td>6400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>63.01ms</td>
+                <td>92ms</td>
+            </tr>
+            <tr>
+                <td>/goals/detailed-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>6400</td>
+                <td>6400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>82.48ms</td>
+                <td>156ms</td>
+            </tr>
+            <tr>
+                <td>/goals/cascade-json/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3</td>
+                <td>6400</td>
+                <td>6400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>38.89ms</td>
+                <td>85ms</td>
+            </tr>
+            <tr>
+                <td>/periods/previous-current-next</td>
+                <td>6400</td>
+                <td>6400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>70.34ms</td>
+                <td>123ms</td>
+            </tr>
+            <tr>
+                <td>/periods/5b39887b-6659-4d87-975f-508917131ea3/subperiods</td>
+                <td>6400</td>
+                <td>6400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>17.46ms</td>
+                <td>28ms</td>
+            </tr>
+            <tr>
+                <td>/cycles/</td>
+                <td>6400</td>
+                <td>6400</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>15.38ms</td>
+                <td>24ms</td>
+            </tr>
+        </table>
+        
+        <h3>Scenario 7 - Concurrency: 10000</h3>
+        <table class="summary-table">
+            <tr><th>Metric</th><th>Value</th></tr>
+            <tr><td>Concurrency</td><td>10000</td></tr>
+            <tr><td>Total Requests</td><td>180000</td></tr>
+            <tr><td>Success Rate</td><td>98.50%</td></tr>
+            <tr><td>RPS</td><td>182.50</td></tr>
+            <tr><td>Mean Latency</td><td>247.80ms</td></tr>
+            <tr><td>P95 Latency</td><td>389ms</td></tr>
+            <tr><td>Duration</td><td>986.32s</td></tr>
+        </table>
+
+        <h4>Endpoint Details:</h4>
+        <table class="endpoint-table">
+            <tr>
+                <th>Endpoint</th>
+                <th>Requests</th>
+                <th>Success</th>
+                <th>Errors</th>
+                <th>Success Rate</th>
+                <th>Mean Latency</th>
+                <th>P95 Latency</th>
+            </tr>
+            
+            <tr>
+                <td>/auth/get-tenants</td>
+                <td>10000</td>
+                <td>10000</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>409.15ms</td>
+                <td>557ms</td>
+            </tr>
+            <tr>
+                <td>/user/me</td>
+                <td>10000</td>
+                <td>9683</td>
+                <td>317</td>
+                <td>96.83%</td>
+                <td>930.11ms</td>
+                <td>53ms</td>
+            </tr>
+            <tr>
+                <td>/user/active-and-inactive-users</td>
+                <td>10000</td>
+                <td>9755</td>
+                <td>245</td>
+                <td>97.55%</td>
+                <td>774.49ms</td>
+                <td>123ms</td>
+            </tr>
+            <tr>
+                <td>/user/get-user-skills/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>10000</td>
+                <td>9748</td>
+                <td>252</td>
+                <td>97.48%</td>
+                <td>612.04ms</td>
+                <td>38ms</td>
+            </tr>
+            <tr>
+                <td>/user/team/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>10000</td>
+                <td>9749</td>
+                <td>251</td>
+                <td>97.49%</td>
+                <td>15.61ms</td>
+                <td>24ms</td>
+            </tr>
+            <tr>
+                <td>/user/chat-users/</td>
+                <td>10000</td>
+                <td>9753</td>
+                <td>247</td>
+                <td>97.53%</td>
+                <td>215.89ms</td>
+                <td>308ms</td>
+            </tr>
+            <tr>
+                <td>/user/all-users</td>
+                <td>10000</td>
+                <td>9750</td>
+                <td>250</td>
+                <td>97.50%</td>
+                <td>25.65ms</td>
+                <td>46ms</td>
+            </tr>
+            <tr>
+                <td>/user/user-progress-details/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3/a915cb6e-0974-4fb8-9553-81f04ce7ca45</td>
+                <td>10000</td>
+                <td>9748</td>
+                <td>252</td>
+                <td>97.48%</td>
+                <td>311.74ms</td>
+                <td>683ms</td>
+            </tr>
+            <tr>
+                <td>/goals/user-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>10000</td>
+                <td>9750</td>
+                <td>250</td>
+                <td>97.50%</td>
+                <td>36.73ms</td>
+                <td>68ms</td>
+            </tr>
+            <tr>
+                <td>/goals/manager-reportee/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>10000</td>
+                <td>9752</td>
+                <td>248</td>
+                <td>97.52%</td>
+                <td>85.26ms</td>
+                <td>172ms</td>
+            </tr>
+            <tr>
+                <td>/goals/eligible-reportees-for-cascade/5b39887b-6659-4d87-975f-508917131ea3</td>
+                <td>10000</td>
+                <td>9866</td>
+                <td>134</td>
+                <td>98.66%</td>
+                <td>30.89ms</td>
+                <td>58ms</td>
+            </tr>
+            <tr>
+                <td>/goals/get-goal-categories</td>
+                <td>10000</td>
+                <td>10000</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>13.54ms</td>
+                <td>19ms</td>
+            </tr>
+            <tr>
+                <td>/goals/get-objectives-akrs-and-quadrants/a915cb6e-0974-4fb8-9553-81f04ce7ca45</td>
+                <td>10000</td>
+                <td>10000</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>61.87ms</td>
+                <td>85ms</td>
+            </tr>
+            <tr>
+                <td>/goals/detailed-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
+                <td>10000</td>
+                <td>10000</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>74.29ms</td>
+                <td>134ms</td>
+            </tr>
+            <tr>
+                <td>/goals/cascade-json/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3</td>
+                <td>10000</td>
+                <td>10000</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>29.79ms</td>
+                <td>52ms</td>
+            </tr>
+            <tr>
+                <td>/periods/previous-current-next</td>
+                <td>10000</td>
+                <td>10000</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>60.75ms</td>
+                <td>104ms</td>
+            </tr>
+            <tr>
+                <td>/periods/5b39887b-6659-4d87-975f-508917131ea3/subperiods</td>
+                <td>10000</td>
+                <td>10000</td>
+                <td>0</td>
+                <td>100.00%</td>
+                <td>16.50ms</td>
+                <td>24ms</td>
+            </tr>
+            <tr>
+                <td>/cycles/</td>
+                <td>10000</td>
+                <td>9747</td>
+                <td>253</td>
+                <td>97.47%</td>
+                <td>756.05ms</td>
+                <td>20ms</td>
             </tr>
         </table>
         
     </div>
 
     <div class="section">
-        <h2>5. Performance Charts</h2>
+        <h2>6. Performance Charts</h2>
         
         <div class="chart-container">
-            <h3>Endpoint Response Times</h3>
+            <h3>Scaling Performance Overview (Latency vs RPS)</h3>
+            <canvas id="scalingChart" width="800" height="400"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <h3>Latency Scaling by Concurrency</h3>
+            <canvas id="latencyScalingChart" width="800" height="400"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <h3>Throughput Scaling (RPS by Concurrency)</h3>
+            <canvas id="throughputChart" width="800" height="400"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <h3>Success Rate by Concurrency Level</h3>
+            <canvas id="successRateChart" width="800" height="400"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <h3>Endpoint Response Times (Best Scenario)</h3>
             <canvas id="endpointLatencyChart" width="800" height="400"></canvas>
         </div>
         
         <div class="chart-container">
-            <h3>Success Rate Overview</h3>
-            <canvas id="successChart" width="800" height="400"></canvas>
-        </div>
-        
-        <div class="chart-container">
-            <h3>Latency Distribution by Endpoint</h3>
-            <canvas id="percentileChart" width="800" height="400"></canvas>
-        </div>
-        
-        <div class="chart-container">
-            <h3>Endpoint Performance Comparison</h3>
-            <canvas id="endpointChart" width="800" height="600"></canvas>
+            <h3>Overall Test Results</h3>
+            <canvas id="overallChart" width="400" height="400"></canvas>
         </div>
     </div>
     
@@ -311,7 +1581,183 @@
             secondary: '#95a5a6'
         };
 
-        // Endpoint Response Times Chart (replacing the empty concurrency chart)
+        // Scaling Performance Overview (Scatter plot: RPS vs Latency)
+        const scalingCtx = document.getElementById('scalingChart').getContext('2d');
+        new Chart(scalingCtx, {
+            type: 'scatter',
+            data: {
+                datasets: [{
+                    label: 'Performance Points',
+                    data: [{x: 6.457316901297955, y: 7241.961944444444}, {x: 92.41509801847685, y: 441.26194444444445}, {x: 170.65351017803735, y: 242.7263888888889}, {x: 127.11503682627742, y: 340.4291666666667}, {x: 368.7771453149687, y: 112.73258680555556}, {x: 438.9004138516483, y: 94.47606770833333}, {x: 182.4961967434678, y: 247.798}],
+                    backgroundColor: chartColors.primary,
+                    borderColor: chartColors.primary,
+                    pointRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Scaling Performance: RPS vs Latency by Concurrency'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const concurrency = [200, 400, 800, 1600, 3200, 6400, 10000][context.dataIndex];
+                                return `Concurrency ${concurrency}: ${context.parsed.x} RPS, ${context.parsed.y}ms latency`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Requests Per Second (RPS)'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Mean Latency (ms)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Latency Scaling Chart
+        const latencyScalingCtx = document.getElementById('latencyScalingChart').getContext('2d');
+        new Chart(latencyScalingCtx, {
+            type: 'line',
+            data: {
+                labels: ["200", "400", "800", "1600", "3200", "6400", "10000"],
+                datasets: [{
+                    label: 'Mean Latency (ms)',
+                    data: [7241.961944444444, 441.26194444444445, 242.7263888888889, 340.4291666666667, 112.73258680555556, 94.47606770833333, 247.798],
+                    borderColor: chartColors.primary,
+                    backgroundColor: chartColors.primary + '20',
+                    tension: 0.1,
+                    fill: false
+                }, {
+                    label: 'P95 Latency (ms)',
+                    data: [30000, 1581, 693, 666, 442, 393, 389],
+                    borderColor: chartColors.warning,
+                    backgroundColor: chartColors.warning + '20',
+                    tension: 0.1,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Response Time Scaling by Concurrency Level'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Latency (milliseconds)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Concurrent Connections'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Throughput Chart
+        const throughputCtx = document.getElementById('throughputChart').getContext('2d');
+        new Chart(throughputCtx, {
+            type: 'bar',
+            data: {
+                labels: ["200", "400", "800", "1600", "3200", "6400", "10000"],
+                datasets: [{
+                    label: 'Requests Per Second',
+                    data: [6.457316901297955, 92.41509801847685, 170.65351017803735, 127.11503682627742, 368.7771453149687, 438.9004138516483, 182.4961967434678],
+                    backgroundColor: chartColors.success,
+                    borderColor: chartColors.success,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Throughput Scaling (RPS by Concurrency)'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Requests Per Second'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Concurrent Connections'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Success Rate Chart
+        const successRateCtx = document.getElementById('successRateChart').getContext('2d');
+        new Chart(successRateCtx, {
+            type: 'line',
+            data: {
+                labels: ["200", "400", "800", "1600", "3200", "6400", "10000"],
+                datasets: [{
+                    label: 'Success Rate (%)',
+                    data: [74, 100, 100, 99.37152777777779, 100, 100, 98.50055555555556],
+                    borderColor: chartColors.success,
+                    backgroundColor: chartColors.success + '20',
+                    tension: 0.1,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Success Rate by Concurrency Level'
+                    }
+                },
+                scales: {
+                    y: {
+                        min: 0,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Success Rate (%)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Concurrent Connections'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Endpoint Response Times Chart
         const endpointLatencyCtx = document.getElementById('endpointLatencyChart').getContext('2d');
         new Chart(endpointLatencyCtx, {
             type: 'bar',
@@ -319,7 +1765,7 @@
                 labels: ["/auth/get-tenants", "/user/me", "/user/active-and-inactive-user", "/user/get-user-skills/0f75671e", "/user/team/0f75671e-a024-43bc-", "/user/chat-users/", "/user/all-users", "/user/user-progress-details/0f", "/goals/user-goals/5b39887b-665", "/goals/manager-reportee/5b3988", "/goals/eligible-reportees-for-", "/goals/get-goal-categories", "/goals/get-objectives-akrs-and", "/goals/detailed-goals/5b39887b", "/goals/cascade-json/0f75671e-a", "/periods/previous-current-next", "/periods/5b39887b-6659-4d87-97", "/cycles/"],
                 datasets: [{
                     label: 'Mean Latency (ms)',
-                    data: [6761.38, 4050.72, 4633.66, 3802.26, 4122.52, 4582.94, 5767.26, 10020.96, 4047.52, 4296.4, 4203.08, 4889.6, 5608.54, 6555.78, 6149.62, 7672.14, 4473.1, 6294],
+                    data: [407.9759375, 36.71125, 100.71421875, 22.8284375, 18.32109375, 215.67734375, 31.1903125, 385.5946875, 45.17390625, 96.53046875, 37.37578125, 14.92453125, 63.00796875, 82.4796875, 38.88734375, 70.33546875, 17.4596875, 15.38109375],
                     backgroundColor: chartColors.primary,
                     borderColor: chartColors.primary,
                     borderWidth: 1
@@ -330,7 +1776,7 @@
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Response Times by API Endpoint'
+                        text: 'Endpoint Response Times (Best Performing Scenario: 6400 concurrent)'
                     }
                 },
                 scales: {
@@ -355,14 +1801,14 @@
             }
         });
 
-        // Success Rate Chart
-        const successCtx = document.getElementById('successChart').getContext('2d');
-        new Chart(successCtx, {
+        // Overall Results Chart
+        const overallCtx = document.getElementById('overallChart').getContext('2d');
+        new Chart(overallCtx, {
             type: 'doughnut',
             data: {
                 labels: ['Successful Requests', 'Failed Requests'],
                 datasets: [{
-                    data: [900, 0],
+                    data: [402984, 3816],
                     backgroundColor: [chartColors.success, chartColors.danger],
                     borderWidth: 2
                 }]
@@ -372,121 +1818,10 @@
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Overall Request Success Rate'
+                        text: 'Overall Test Results Summary'
                     },
                     legend: {
                         position: 'bottom'
-                    }
-                }
-            }
-        });
-
-        // Percentile Chart (Radar) - showing P95 and P99 for endpoints
-        const percentileCtx = document.getElementById('percentileChart').getContext('2d');
-        new Chart(percentileCtx, {
-            type: 'radar',
-            data: {
-                labels: ["/auth/get-tenants", "/user/me", "/user/active-and-inactive-user", "/user/get-user-skills/0f75671e", "/user/team/0f75671e-a024-43bc-", "/user/chat-users/", "/user/all-users", "/user/user-progress-details/0f"],
-                datasets: [{
-                    label: 'Mean Latency (ms)',
-                    data: [6761.38, 4050.72, 4633.66, 3802.26, 4122.52, 4582.94, 5767.26, 10020.96],
-                    borderColor: chartColors.primary,
-                    backgroundColor: chartColors.primary + '20',
-                    pointBackgroundColor: chartColors.primary
-                }, {
-                    label: 'P95 Latency (ms)', 
-                    data: [6761.38, 4050.72, 4633.66, 3802.26, 4122.52, 4582.94, 5767.26, 10020.96],
-                    borderColor: chartColors.warning,
-                    backgroundColor: chartColors.warning + '20',
-                    pointBackgroundColor: chartColors.warning
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    title: {
-                        display: true,
-                        text: 'Latency Distribution Comparison (First 8 Endpoints)'
-                    }
-                },
-                scales: {
-                    r: {
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Latency (ms)'
-                        }
-                    }
-                }
-            }
-        });
-
-        // Endpoint Performance Chart
-        const endpointCtx = document.getElementById('endpointChart').getContext('2d');
-        new Chart(endpointCtx, {
-            type: 'bar',
-            data: {
-                labels: ["/auth/get-tenants", "/user/me", "/user/active-and-inactive-user", "/user/get-user-skills/0f75671e", "/user/team/0f75671e-a024-43bc-", "/user/chat-users/", "/user/all-users", "/user/user-progress-details/0f", "/goals/user-goals/5b39887b-665", "/goals/manager-reportee/5b3988", "/goals/eligible-reportees-for-", "/goals/get-goal-categories", "/goals/get-objectives-akrs-and", "/goals/detailed-goals/5b39887b", "/goals/cascade-json/0f75671e-a", "/periods/previous-current-next", "/periods/5b39887b-6659-4d87-97", "/cycles/"],
-                datasets: [{
-                    label: 'Mean Latency (ms)',
-                    data: [6761.38, 4050.72, 4633.66, 3802.26, 4122.52, 4582.94, 5767.26, 10020.96, 4047.52, 4296.4, 4203.08, 4889.6, 5608.54, 6555.78, 6149.62, 7672.14, 4473.1, 6294],
-                    backgroundColor: chartColors.primary,
-                    yAxisID: 'y'
-                }, {
-                    label: 'Success Rate (%)',
-                    data: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100],
-                    backgroundColor: chartColors.success,
-                    yAxisID: 'y1',
-                    type: 'line',
-                    borderColor: chartColors.success,
-                    tension: 0.1
-                }]
-            },
-            options: {
-                responsive: true,
-                interaction: {
-                    mode: 'index',
-                    intersect: false,
-                },
-                plugins: {
-                    title: {
-                        display: true,
-                        text: 'Endpoint Performance: Latency vs Success Rate'
-                    }
-                },
-                scales: {
-                    x: {
-                        title: {
-                            display: true,
-                            text: 'API Endpoints'
-                        },
-                        ticks: {
-                            maxRotation: 45,
-                            minRotation: 45
-                        }
-                    },
-                    y: {
-                        type: 'linear',
-                        display: true,
-                        position: 'left',
-                        title: {
-                            display: true,
-                            text: 'Mean Latency (ms)'
-                        }
-                    },
-                    y1: {
-                        type: 'linear',
-                        display: true,
-                        position: 'right',
-                        title: {
-                            display: true,
-                            text: 'Success Rate (%)'
-                        },
-                        grid: {
-                            drawOnChartArea: false,
-                        },
-                        min: 0,
-                        max: 100
                     }
                 }
             }

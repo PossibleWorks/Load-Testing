@@ -180,12 +180,26 @@ impl LoadTester {
         let scenario_p95_latency = scenario_lat.percentile(95.0);
         let scenario_p99_latency = scenario_lat.percentile(99.0);
 
+        // Enhanced statistical analysis
+        let stats = scenario_lat.statistical_analysis();
+        let p95_with_confidence = scenario_lat.percentile_with_confidence(95.0);
+        let p99_with_confidence = scenario_lat.percentile_with_confidence(99.0);
+
         println!("Scenario Total Requests: {}", scenario_requests);
         println!("Scenario Total Errors: {}", scenario_errors);
         println!("Scenario Success Rate: {:.2}%", scenario_success_rate);
         println!("Scenario RPS: {:.2} req/sec", scenario_rps);
         println!("Scenario Mean Latency: {:.2}ms", scenario_mean_latency);
-        println!("Scenario P95 Latency: {}ms", scenario_p95_latency);
+        println!("Scenario P95 Latency: {}ms (α=0.05, Z={:.3}, CI: {:.1}-{:.1}ms)", 
+                 scenario_p95_latency, p95_with_confidence.z_score, 
+                 p95_with_confidence.confidence_interval_lower, 
+                 p95_with_confidence.confidence_interval_upper);
+        println!("Scenario P99 Latency: {}ms (α=0.01, Z={:.3}, CI: {:.1}-{:.1}ms)", 
+                 scenario_p99_latency, p99_with_confidence.z_score,
+                 p99_with_confidence.confidence_interval_lower, 
+                 p99_with_confidence.confidence_interval_upper);
+        println!("Distribution: {:?} (Skew: {:.3}, Kurtosis: {:.3})", 
+                 stats.distribution_type, stats.skewness, stats.kurtosis);
         println!("Scenario Duration: {:.2}s", scenario_duration.as_secs_f64());
 
         ScenarioResult {
@@ -355,6 +369,8 @@ impl LoadTester {
         let total = success + failures;
 
         let endpoint_lat = endpoint_latencies.lock().unwrap();
+        let stats = endpoint_lat.statistical_analysis();
+        let p95_with_confidence = endpoint_lat.percentile_with_confidence(95.0);
 
         let success_rate = if total > 0 {
             (success as f64 / total as f64) * 100.0
@@ -373,9 +389,17 @@ impl LoadTester {
         }
         let status_string = status_breakdown.join(", ");
 
+        // Show distribution type for debugging
+        let distribution_indicator = match stats.distribution_type {
+            crate::metrics::DistributionType::Normal => "📊", // Bell curve
+            crate::metrics::DistributionType::Skewed => "📈", // Skewed
+            crate::metrics::DistributionType::Bimodal => "📉", // Two peaks
+            crate::metrics::DistributionType::Unknown => "❓", // Unknown
+        };
+
         println!(
-            "Endpoint: {:<60} | Total: {:<4} | Success: {} | Errors: {} | Success Rate: {:.2}% | Mean: {:.2}ms | P95: {}ms | Status: {}",
-            endpoint, total, success, failures, success_rate, mean_latency, p95_latency, status_string
+            "Endpoint: {:<60} | Total: {:<4} | Success: {} | Errors: {} | Success Rate: {:.2}% | Mean: {:.2}ms | P95: {}ms (Z:{:.2}) {} | Status: {}",
+            endpoint, total, success, failures, success_rate, mean_latency, p95_latency, p95_with_confidence.z_score, distribution_indicator, status_string
         );
 
         EndpointResult {
