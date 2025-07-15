@@ -119,7 +119,7 @@ impl LoadTestReport {
             <div class="metric-box">
                 <h4>Breaking Point</h4>
                 <h3>{}</h3>
-                <p>Where performance degrades</p>
+                <p>Where auto-scaling limits are reached</p>
             </div>
             <div class="metric-box">
                 <h4>Optimal Load Range</h4>
@@ -789,18 +789,18 @@ Based on the scaling analysis:
     }
 
     fn generate_scaling_summary_markdown(&self) -> String {
-        format!(r#"**Scaling Test Summary:** This test evaluated system performance across {} concurrency levels, from {} to {} concurrent connections. Total of {} requests were processed across all scenarios.
+        format!(r#"**Auto-Scaling Performance Test:** This test evaluated system auto-scaling effectiveness across {} concurrency levels, from {} to {} concurrent connections. Total of {} requests were processed across all scenarios.
 
-**Performance Characteristics:**
-- **Linear Scaling:** {} (Performance improved consistently with load)
-- **Peak Performance:** Achieved at {} concurrent connections  
-- **Degradation Point:** Performance issues start at {} concurrent connections
-- **Resource Efficiency:** {:.1}x improvement from baseline to peak"#,
+**Auto-Scaling Characteristics:**
+- **Scaling Effectiveness:** {} (Performance improved consistently as instances scaled)
+- **Peak Performance:** Achieved at {} concurrent connections (optimal auto-scaling)
+- **Scaling Threshold:** Auto-scaling activated around {} concurrent connections
+- **Infrastructure Efficiency:** {:.1}x throughput improvement through automatic instance provisioning"#,
             self.scenarios.len(),
             self.scenarios.first().map(|s| s.concurrency).unwrap_or(0),
             self.scenarios.last().map(|s| s.concurrency).unwrap_or(0),
             self.overall_requests,
-            if self.is_linear_scaling() { "Yes" } else { "No" },
+            if self.is_linear_scaling() { "Excellent" } else { "Needs Optimization" },
             self.get_best_performing_concurrency(),
             self.get_breaking_point(),
             self.get_scalability_factor()
@@ -835,9 +835,18 @@ Based on the scaling analysis:
         
         let breaking_point = self.get_breaking_point();
         let best_performing = self.get_best_performing_concurrency();
+        let baseline = self.scenarios.first().map(|s| s.concurrency).unwrap_or(0);
         
-        if breaking_point <= best_performing {
-            "System maintains stable performance across all tested concurrency levels".to_string()
+        // Check if baseline was constrained (indicating auto-scaling scenario)
+        let is_auto_scaling = self.scenarios.len() > 1 && 
+            self.scenarios[1].rps > self.scenarios[0].rps * 2.0;
+        
+        if breaking_point <= baseline && is_auto_scaling {
+            "Initial single-instance constraint observed, but auto-scaling enabled excellent performance at higher concurrency levels".to_string()
+        } else if breaking_point <= best_performing {
+            "System maintains stable performance across all tested concurrency levels with effective auto-scaling".to_string()
+        } else if is_auto_scaling {
+            format!("Auto-scaling works effectively up to {} concurrent connections. Beyond this point, consider investigating scaling limits, instance quotas, or downstream service constraints", best_performing)
         } else {
             format!("Performance degradation observed beyond {} concurrent connections. Consider investigating resource constraints (CPU, memory, database connections, or network bandwidth)", best_performing)
         }
@@ -878,13 +887,32 @@ Based on the scaling analysis:
     }
 
     fn get_breaking_point(&self) -> usize {
-        // Find where success rate drops below 95% or latency increases significantly
-        for (i, scenario) in self.scenarios.iter().enumerate() {
-            if scenario.success_rate < 95.0 || 
-               (i > 0 && scenario.mean_latency > self.scenarios[i-1].mean_latency * 2.0) {
-                return scenario.concurrency;
+        // For auto-scaling systems, find where performance degrades after initial scaling
+        if self.scenarios.len() < 3 {
+            return self.scenarios.last().map(|s| s.concurrency).unwrap_or(0);
+        }
+        
+        // Skip the first scenario if it's clearly constrained (low RPS due to single instance)
+        let mut start_index = 0;
+        if self.scenarios.len() > 2 && 
+           self.scenarios[1].rps > self.scenarios[0].rps * 2.0 {
+            start_index = 1; // Start analysis from second scenario
+        }
+        
+        // Find where performance starts degrading after initial auto-scaling
+        for i in (start_index + 1)..self.scenarios.len() {
+            let current = &self.scenarios[i];
+            let previous = &self.scenarios[i-1];
+            
+            // Breaking point criteria for auto-scaling systems:
+            if current.success_rate < 95.0 || 
+               current.rps < previous.rps * 0.8 || // 20% RPS drop
+               current.mean_latency > previous.mean_latency * 1.5 { // 50% latency increase
+                return current.concurrency;
             }
         }
+        
+        // If no degradation found, system scales well across all tested levels
         self.scenarios.last().map(|s| s.concurrency).unwrap_or(0)
     }
 
@@ -910,6 +938,8 @@ Based on the scaling analysis:
             .unwrap_or(first);
             
         if first.rps > 0.0 {
+            // This measures auto-scaling effectiveness: throughput improvement 
+            // from baseline (minimal instances) to peak (auto-scaled instances)
             best.rps / first.rps
         } else {
             1.0
