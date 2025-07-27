@@ -22,7 +22,7 @@
     <div class="header">
         <h1>Load Test Report</h1>
         <p>Generated on: 2025-07-27 11:49:53</p>
-        <p>Test Duration: 10394.87 seconds</p>
+        <p>Test Duration: 10133.33 seconds</p>
     </div>
 
     <div class="section">
@@ -42,7 +42,7 @@
             <tr><th>Parameter</th><th>Value</th></tr>
             <tr><td>Base URL</td><td>https://bev3-dev.lykkebook.com/api</td></tr>
             <tr><td>Total Endpoints Tested</td><td>18</td></tr>
-            <tr><td>Test Start Time</td><td>2025-07-27 08:56:38</td></tr>
+            <tr><td>Test Start Time</td><td>2025-07-27 09:20:52</td></tr>
             <tr><td>Test End Time</td><td>2025-07-27 11:49:53</td></tr>
         </table>
     </div>
@@ -52,30 +52,30 @@
         <div class="metrics">
             <div class="metric-box">
                 <h3>Total Requests</h3>
-                <h2>406800</h2>
+                <h2>403200</h2>
             </div>
             <div class="metric-box">
                 <h3>Success Rate</h3>
-                <h2>99.96%</h2>
+                <h2>99.98%</h2>
             </div>
             <div class="metric-box">
                 <h3>Average RPS</h3>
-                <h2>39.13</h2>
+                <h2>39.79</h2>
             </div>
             <div class="metric-box">
                 <h3>Mean Latency</h3>
-                <h2>1259.91ms</h2>
+                <h2>1238.45ms</h2>
             </div>
         </div>
 
         <table class="summary-table">
             <tr><th>Metric</th><th>Value</th></tr>
-            <tr><td>Total Requests</td><td>406800</td></tr>
-            <tr><td>Successful Requests</td><td>406635</td></tr>
-            <tr><td>Failed Requests</td><td>165</td></tr>
-            <tr><td>Success Rate</td><td>99.96%</td></tr>
-            <tr><td>Average RPS</td><td>39.13 req/sec</td></tr>
-            <tr><td>Mean Latency</td><td>1259.91ms</td></tr>
+            <tr><td>Total Requests</td><td>403200</td></tr>
+            <tr><td>Successful Requests</td><td>403135</td></tr>
+            <tr><td>Failed Requests</td><td>65</td></tr>
+            <tr><td>Success Rate</td><td>99.98%</td></tr>
+            <tr><td>Average RPS</td><td>39.79 req/sec</td></tr>
+            <tr><td>Mean Latency</td><td>1238.45ms</td></tr>
             <tr><td>95th Percentile Latency</td><td>6687ms</td></tr>
             <tr><td>99th Percentile Latency</td><td>7407ms</td></tr>
         </table>
@@ -84,15 +84,15 @@
     <div class="section">
         <h2>4. Scaling Analysis & Comparison</h2>
         
-        <p><strong>Scaling Test Summary:</strong> This test evaluated system performance across 7 concurrency levels, 
-        from 200 to 10000 concurrent connections. Total of 406800 requests were processed across all scenarios.</p>
+        <p><strong>Scaling Test Summary:</strong> This test evaluated system performance across 6 concurrency levels, 
+        from 400 to 10000 concurrent connections. Total of 403200 requests were processed across all scenarios.</p>
         
         <h4>Performance Characteristics:</h4>
         <ul>
             <li><strong>Linear Scaling:</strong> Yes (Performance improved consistently with load)</li>
-            <li><strong>Peak Performance:</strong> Achieved at 10000 concurrent connections</li>
-            <li><strong>Degradation Point:</strong> Performance issues start at 10000 concurrent connections</li>
-            <li><strong>Resource Efficiency:</strong> 3.1x improvement from baseline to peak</li>
+            <li><strong>Peak Performance:</strong> Achieved at 3200 concurrent connections</li>
+            <li><strong>Degradation Point:</strong> Performance issues start at 6400 concurrent connections</li>
+            <li><strong>Resource Efficiency:</strong> 1.7x improvement from baseline to peak</li>
         </ul>
         
         <h3>Performance Trends</h3>
@@ -109,17 +109,6 @@
                 <th>Performance Score</th>
             </tr>
             
-            <tr>
-                <td>200</td>
-                <td>3600</td>
-                <td>97.22</td>
-                <td>13.76</td>
-                <td>3372.91</td>
-                <td>14415</td>
-                <td>30000</td>
-                <td>261.54</td>
-                <td>0.0</td>
-            </tr>
             <tr>
                 <td>400</td>
                 <td>7200</td>
@@ -192,22 +181,22 @@
         <div class="metrics">
             <div class="metric-box">
                 <h4>Best Performing Concurrency</h4>
-                <h3>10000</h3>
-                <p>Highest RPS with good latency</p>
+                <h3>3200</h3>
+                <p>Highest RPS with optimal latency</p>
             </div>
             <div class="metric-box">
                 <h4>Breaking Point</h4>
-                <h3>10000</h3>
-                <p>Where auto-scaling limits are reached</p>
+                <h3>6400</h3>
+                <p>Where performance degradation begins</p>
             </div>
             <div class="metric-box">
                 <h4>Optimal Load Range</h4>
-                <h3>5000 - 10000</h3>
+                <h3>1600 - 3200</h3>
                 <p>Recommended operating range</p>
             </div>
             <div class="metric-box">
                 <h4>Scalability Factor</h4>
-                <h3>3.1x</h3>
+                <h3>1.7x</h3>
                 <p>Performance improvement ratio</p>
             </div>
         </div>
@@ -216,195 +205,7 @@
     <div class="section">
         <h2>5. Detailed Scenario Results</h2>
         
-        <h3>Scenario 1 - Concurrency: 200</h3>
-        <table class="summary-table">
-            <tr><th>Metric</th><th>Value</th></tr>
-            <tr><td>Concurrency</td><td>200</td></tr>
-            <tr><td>Total Requests</td><td>3600</td></tr>
-            <tr><td>Success Rate</td><td>97.22%</td></tr>
-            <tr><td>RPS</td><td>13.76</td></tr>
-            <tr><td>Mean Latency</td><td>3372.91ms</td></tr>
-            <tr><td>P95 Latency</td><td>14415ms</td></tr>
-            <tr><td>Duration</td><td>261.54s</td></tr>
-        </table>
-
-        <h4>Endpoint Details:</h4>
-        <table class="endpoint-table">
-            <tr>
-                <th>Endpoint</th>
-                <th>Requests</th>
-                <th>Success</th>
-                <th>Errors</th>
-                <th>Success Rate</th>
-                <th>Mean Latency</th>
-                <th>P95 Latency</th>
-            </tr>
-            
-            <tr>
-                <td>/auth/get-tenants</td>
-                <td>200</td>
-                <td>200</td>
-                <td>0</td>
-                <td>100.00%</td>
-                <td>1953.12ms</td>
-                <td>2798ms</td>
-            </tr>
-            <tr>
-                <td>/user/me</td>
-                <td>200</td>
-                <td>100</td>
-                <td>100</td>
-                <td>50.00%</td>
-                <td>17463.65ms</td>
-                <td>30000ms</td>
-            </tr>
-            <tr>
-                <td>/user/active-and-inactive-users</td>
-                <td>200</td>
-                <td>200</td>
-                <td>0</td>
-                <td>100.00%</td>
-                <td>3904.24ms</td>
-                <td>4808ms</td>
-            </tr>
-            <tr>
-                <td>/user/get-user-skills/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
-                <td>200</td>
-                <td>200</td>
-                <td>0</td>
-                <td>100.00%</td>
-                <td>1246.37ms</td>
-                <td>1959ms</td>
-            </tr>
-            <tr>
-                <td>/user/team/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
-                <td>200</td>
-                <td>200</td>
-                <td>0</td>
-                <td>100.00%</td>
-                <td>864.21ms</td>
-                <td>1262ms</td>
-            </tr>
-            <tr>
-                <td>/user/chat-users/</td>
-                <td>200</td>
-                <td>200</td>
-                <td>0</td>
-                <td>100.00%</td>
-                <td>3203.01ms</td>
-                <td>3674ms</td>
-            </tr>
-            <tr>
-                <td>/user/all-users</td>
-                <td>200</td>
-                <td>200</td>
-                <td>0</td>
-                <td>100.00%</td>
-                <td>1443.72ms</td>
-                <td>1798ms</td>
-            </tr>
-            <tr>
-                <td>/user/user-progress-details/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3/a915cb6e-0974-4fb8-9553-81f04ce7ca45</td>
-                <td>200</td>
-                <td>200</td>
-                <td>0</td>
-                <td>100.00%</td>
-                <td>14346.48ms</td>
-                <td>14892ms</td>
-            </tr>
-            <tr>
-                <td>/goals/user-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
-                <td>200</td>
-                <td>200</td>
-                <td>0</td>
-                <td>100.00%</td>
-                <td>1712.19ms</td>
-                <td>2067ms</td>
-            </tr>
-            <tr>
-                <td>/goals/manager-reportee/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
-                <td>200</td>
-                <td>200</td>
-                <td>0</td>
-                <td>100.00%</td>
-                <td>2894.64ms</td>
-                <td>3463ms</td>
-            </tr>
-            <tr>
-                <td>/goals/eligible-reportees-for-cascade/5b39887b-6659-4d87-975f-508917131ea3</td>
-                <td>200</td>
-                <td>200</td>
-                <td>0</td>
-                <td>100.00%</td>
-                <td>1641.16ms</td>
-                <td>1990ms</td>
-            </tr>
-            <tr>
-                <td>/goals/get-goal-categories</td>
-                <td>200</td>
-                <td>200</td>
-                <td>0</td>
-                <td>100.00%</td>
-                <td>533.30ms</td>
-                <td>662ms</td>
-            </tr>
-            <tr>
-                <td>/goals/get-objectives-akrs-and-quadrants/a915cb6e-0974-4fb8-9553-81f04ce7ca45</td>
-                <td>200</td>
-                <td>200</td>
-                <td>0</td>
-                <td>100.00%</td>
-                <td>1624.13ms</td>
-                <td>2014ms</td>
-            </tr>
-            <tr>
-                <td>/goals/detailed-goals/5b39887b-6659-4d87-975f-508917131ea3/0f75671e-a024-43bc-82aa-1f454f39ffd5</td>
-                <td>200</td>
-                <td>200</td>
-                <td>0</td>
-                <td>100.00%</td>
-                <td>2654.23ms</td>
-                <td>3035ms</td>
-            </tr>
-            <tr>
-                <td>/goals/cascade-json/0f75671e-a024-43bc-82aa-1f454f39ffd5/5b39887b-6659-4d87-975f-508917131ea3</td>
-                <td>200</td>
-                <td>200</td>
-                <td>0</td>
-                <td>100.00%</td>
-                <td>1679.96ms</td>
-                <td>2170ms</td>
-            </tr>
-            <tr>
-                <td>/periods/previous-current-next</td>
-                <td>200</td>
-                <td>200</td>
-                <td>0</td>
-                <td>100.00%</td>
-                <td>2218.20ms</td>
-                <td>2492ms</td>
-            </tr>
-            <tr>
-                <td>/periods/5b39887b-6659-4d87-975f-508917131ea3/subperiods</td>
-                <td>200</td>
-                <td>200</td>
-                <td>0</td>
-                <td>100.00%</td>
-                <td>736.05ms</td>
-                <td>895ms</td>
-            </tr>
-            <tr>
-                <td>/cycles/</td>
-                <td>200</td>
-                <td>200</td>
-                <td>0</td>
-                <td>100.00%</td>
-                <td>593.67ms</td>
-                <td>768ms</td>
-            </tr>
-        </table>
-        
-        <h3>Scenario 2 - Concurrency: 400</h3>
+        <h3>Scenario 1 - Concurrency: 400</h3>
         <table class="summary-table">
             <tr><th>Metric</th><th>Value</th></tr>
             <tr><td>Concurrency</td><td>400</td></tr>
@@ -592,7 +393,7 @@
             </tr>
         </table>
         
-        <h3>Scenario 3 - Concurrency: 800</h3>
+        <h3>Scenario 2 - Concurrency: 800</h3>
         <table class="summary-table">
             <tr><th>Metric</th><th>Value</th></tr>
             <tr><td>Concurrency</td><td>800</td></tr>
@@ -780,7 +581,7 @@
             </tr>
         </table>
         
-        <h3>Scenario 4 - Concurrency: 1600</h3>
+        <h3>Scenario 3 - Concurrency: 1600</h3>
         <table class="summary-table">
             <tr><th>Metric</th><th>Value</th></tr>
             <tr><td>Concurrency</td><td>1600</td></tr>
@@ -968,7 +769,7 @@
             </tr>
         </table>
         
-        <h3>Scenario 5 - Concurrency: 3200</h3>
+        <h3>Scenario 4 - Concurrency: 3200</h3>
         <table class="summary-table">
             <tr><th>Metric</th><th>Value</th></tr>
             <tr><td>Concurrency</td><td>3200</td></tr>
@@ -1156,7 +957,7 @@
             </tr>
         </table>
         
-        <h3>Scenario 6 - Concurrency: 6400</h3>
+        <h3>Scenario 5 - Concurrency: 6400</h3>
         <table class="summary-table">
             <tr><th>Metric</th><th>Value</th></tr>
             <tr><td>Concurrency</td><td>6400</td></tr>
@@ -1344,7 +1145,7 @@
             </tr>
         </table>
         
-        <h3>Scenario 7 - Concurrency: 10000</h3>
+        <h3>Scenario 6 - Concurrency: 10000</h3>
         <table class="summary-table">
             <tr><th>Metric</th><th>Value</th></tr>
             <tr><td>Concurrency</td><td>10000</td></tr>
@@ -1588,7 +1389,7 @@
             data: {
                 datasets: [{
                     label: 'Performance Points',
-                    data: [{x: 13.7648561391339, y: 3372.907777777778}, {x: 25.02463657849638, y: 1864.6886111111112}, {x: 39.46628910328209, y: 1204.5122222222221}, {x: 39.891451336530714, y: 1223.11}, {x: 42.362820707478015, y: 1163.7703645833333}, {x: 39.52636025753708, y: 1255.3635503472221}, {x: 40.14513402845937, y: 1238.6481944444445}],
+                    data: [{x: 25.02463657849638, y: 1864.6886111111112}, {x: 39.46628910328209, y: 1204.5122222222221}, {x: 39.891451336530714, y: 1223.11}, {x: 42.362820707478015, y: 1163.7703645833333}, {x: 39.52636025753708, y: 1255.3635503472221}, {x: 40.14513402845937, y: 1238.6481944444445}],
                     backgroundColor: chartColors.primary,
                     borderColor: chartColors.primary,
                     pointRadius: 8
@@ -1604,7 +1405,7 @@
                     tooltip: {
                         callbacks: {
                             label: function(context) {
-                                const concurrency = [200, 400, 800, 1600, 3200, 6400, 10000][context.dataIndex];
+                                const concurrency = [400, 800, 1600, 3200, 6400, 10000][context.dataIndex];
                                 return `Concurrency ${concurrency}: ${context.parsed.x} RPS, ${context.parsed.y}ms latency`;
                             }
                         }
@@ -1632,17 +1433,17 @@
         new Chart(latencyScalingCtx, {
             type: 'line',
             data: {
-                labels: ["200", "400", "800", "1600", "3200", "6400", "10000"],
+                labels: ["400", "800", "1600", "3200", "6400", "10000"],
                 datasets: [{
                     label: 'Mean Latency (ms)',
-                    data: [3372.907777777778, 1864.6886111111112, 1204.5122222222221, 1223.11, 1163.7703645833333, 1255.3635503472221, 1238.6481944444445],
+                    data: [1864.6886111111112, 1204.5122222222221, 1223.11, 1163.7703645833333, 1255.3635503472221, 1238.6481944444445],
                     borderColor: chartColors.primary,
                     backgroundColor: chartColors.primary + '20',
                     tension: 0.1,
                     fill: false
                 }, {
                     label: 'P95 Latency (ms)',
-                    data: [14415, 6741, 6504, 6579, 6268, 6906, 6894],
+                    data: [6741, 6504, 6579, 6268, 6906, 6894],
                     borderColor: chartColors.warning,
                     backgroundColor: chartColors.warning + '20',
                     tension: 0.1,
@@ -1680,10 +1481,10 @@
         new Chart(throughputCtx, {
             type: 'bar',
             data: {
-                labels: ["200", "400", "800", "1600", "3200", "6400", "10000"],
+                labels: ["400", "800", "1600", "3200", "6400", "10000"],
                 datasets: [{
                     label: 'Requests Per Second',
-                    data: [13.7648561391339, 25.02463657849638, 39.46628910328209, 39.891451336530714, 42.362820707478015, 39.52636025753708, 40.14513402845937],
+                    data: [25.02463657849638, 39.46628910328209, 39.891451336530714, 42.362820707478015, 39.52636025753708, 40.14513402845937],
                     backgroundColor: chartColors.success,
                     borderColor: chartColors.success,
                     borderWidth: 1
@@ -1720,10 +1521,10 @@
         new Chart(successRateCtx, {
             type: 'line',
             data: {
-                labels: ["200", "400", "800", "1600", "3200", "6400", "10000"],
+                labels: ["400", "800", "1600", "3200", "6400", "10000"],
                 datasets: [{
                     label: 'Success Rate (%)',
-                    data: [97.22222222222221, 99.83333333333333, 99.98611111111111, 99.98263888888889, 99.98784722222223, 99.98611111111111, 99.98722222222223],
+                    data: [99.83333333333333, 99.98611111111111, 99.98263888888889, 99.98784722222223, 99.98611111111111, 99.98722222222223],
                     borderColor: chartColors.success,
                     backgroundColor: chartColors.success + '20',
                     tension: 0.1,
@@ -1808,7 +1609,7 @@
             data: {
                 labels: ['Successful Requests', 'Failed Requests'],
                 datasets: [{
-                    data: [406635, 165],
+                    data: [403135, 65],
                     backgroundColor: [chartColors.success, chartColors.danger],
                     borderWidth: 2
                 }]
